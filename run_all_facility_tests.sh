@@ -1,0 +1,1 @@
+for file in facilities/*/*/tests/test.lua;do lua "$file" -o text;done

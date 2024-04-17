@@ -1,0 +1,36 @@
+.ViewGraphModal {
+    left: 5%;
+    width: 90%;
+    top: 5% !important;
+    margin: 0;
+}
+
+.ModalButtons button {
+    margin-left: 10px;
+    bottom: 10px !important;
+}
+
+#graphToSave {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.graph-modal-note {
+    padding-top: 4px;
+}
+
+.BatchModal .selected-zone {
+    background-color: #00BB00;
+}
+
+.zone-card {
+  margin: 10px;
+  display: inline-block;
+  width: 116px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.BatchModal .checkbox{
+  margin-left: 18px;
+}

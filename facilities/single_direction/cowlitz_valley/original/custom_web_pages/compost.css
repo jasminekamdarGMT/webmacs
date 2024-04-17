@@ -1,0 +1,283 @@
+h1.title{
+	position: relative;
+	margin: auto;
+	width: 740px;
+	padding: 10px;
+	text-align: center;
+}
+
+#content{
+	background-color: lightgrey;
+	position: relative;
+	margin: auto;
+	width: 900px;
+	height: 700px;
+	padding: 10px;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+
+#login{
+	position: relative;
+    margin: auto;
+    width: 300px;
+    padding: 10px;
+    top: 20%;
+    background-color: lightgrey;
+    border-radius: 25px;
+    border: 1px black solid;
+}
+
+#files, div.settings{
+	position: relative;
+	border-top: 1px solid black;
+	padding: 10px;
+}
+
+p{
+	margin: 0px;
+}
+
+div.zone{
+	margin-right: 10px;
+	margin-left: 20px;
+	border: 1px black solid;
+	background-color: grey;
+	font-size: 24px;
+	width: 190px;
+	padding-left: 10px;
+	padding-right: 0px;
+	cursor: pointer;
+}
+
+div.zone, div.buttonset{
+	height: 81px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+div.blower{
+	position: relative;
+	z-index: 1;
+	margin: 10px;
+	margin-left: -50px;
+	margin-top:-5px;
+	width: 230px;
+	font-size: 24px;
+}
+
+div.blowerImage{
+    background-image: url(blower.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 120px;
+    width: 147px;
+    left: 132px;
+	z-index: 1;
+}
+
+div.blowerText{
+    position: absolute;
+	font-size: 24px;
+    right: 20px;
+	bottom: 20px;
+}
+
+span.state{
+    position: absolute;
+    font-size: 24px;
+    top: 40;
+    left: 12px;
+	text-align: center;
+	width: 80px;
+}
+
+span{
+	font-weight: bold;
+}
+
+div.pipe{
+	background-color: yellow;
+	border: 1px red solid;
+	position: absolute;
+	width: 30px;
+	height: 567px; 
+	top: 100px;
+	left: 240px;
+}
+
+div.zonepipe{
+	background-color: yellow;
+	border-top: 1px red solid;
+	border-bottom: 1px red solid;
+	position: absolute;
+	width: 30px;
+	height: 20px; 
+	left: 222px;
+}
+
+div.circle {
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px; 
+	border: 1px black solid;
+	position: absolute;
+	display: table;
+	left: 230px;
+}
+
+p.damper{
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	text-align: center;
+}
+
+div.control{
+	position: relative;
+	width: 35%;
+	float: left;
+}
+
+div.buttons{
+	position: relative;
+	float: left;
+}
+
+div.buttons{ 
+	width: 100px;
+	margin-top: 110px;
+}
+
+div.buttonset button{
+	margin-bottom:10px;
+	width: 100px;
+}
+
+table{
+	width: 100%;
+	margin: 5px;
+}
+
+td{
+	padding-left: 5px;
+}
+
+table input{
+	width: 100%;
+}
+
+td.head{
+	text-align: right;
+	width: 30%;
+}
+
+td.foot{
+	width: 13%;
+	padding: 0px;
+}
+
+label, input[type='text'], input[type='number']{
+    display: inline-block;
+	resize: none;
+	margin: 5px;
+    text-align: right;
+}
+
+label{
+    width: 30%;
+}
+
+label + input[type='text'], label + input[type='number']{
+    width: 30%;
+	right: 0;
+}
+
+label.checkbox{
+	width: 100%;
+	position: absolute;
+	text-align: left;
+	margin: 0px;
+}
+
+input[type='checkbox']{
+	position: absolute;
+	right: 0px;
+}
+
+button.save{
+	position:absolute;
+	left: 643px;
+	bottom: 10px;
+}
+
+fieldset{
+  -moz-border-radius:5px;  
+  border-radius: 5px;  
+  -webkit-border-radius: 5px;
+  border: 1px black solid;
+  margin-bottom: 10px;
+  width: 650px;
+}
+
+.tab-menu
+{
+	padding: 2px 5px 0px 5px;
+	margin: 5px 0px 5px 0px;
+	font: bold 11px verdana, arial, sans-serif;
+}
+
+.tab
+{
+	border: 1px solid #000;
+	margin: 0px 2px 0px 0px;
+	padding: 4px 8px 4px 8px;
+	width: auto;
+	height: auto;
+	background-color: #fff;
+	float: left;
+	cursor: pointer;
+}
+
+.tab a
+{
+	text-decoration: none;
+	color: #000;
+}
+
+a{
+	padding-left: 10px; 
+	padding-right: 10px;
+}
+
+span.value{
+	cursor: pointer;
+}
+
+button.dialog{
+	font-size: 13px;
+}
+div.ui-dialog{
+	background-color:white;
+	padding: 20px;
+	border: 1px solid black;
+}
+
+button.ui-button-icon-only{
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+}
+
+button.ui-button-text-only{
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+}

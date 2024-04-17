@@ -1,0 +1,77 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+body.modal-open {
+    overflow: visible;
+}
+
+.well {
+    padding-top: 0px;
+    min-height: 160px;
+}
+
+.well .label {
+    margin-top: 20px;
+}
+
+.temp-display {
+    padding: 10px 10px 0px 0px;
+}
+.temp-display b {
+    font-size: 24px;
+    color: navy;
+}
+
+.active-zone {
+    background-color: #00BB00;
+}
+
+.inactive-zone {
+    background-color: #999;
+}
+
+div.footer {
+	position: relative;
+	padding: 30px 0px 20px 0px;
+	font-size: 24px;
+}
+
+div.productTitles {
+    float: left;
+    margin-bottom: 10px;
+}
+
+div.productTitle {
+	font-size: 28px;
+	margin-top: 4px;
+	margin-bottom: 6px;
+}
+
+div.productSubTitle {
+    font-size: 14px;
+    line-height: 16px;
+	font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+div.logoContainer {
+    float: right;
+    margin-bottom: 0px;
+}
+
+div.logoContainer a {
+	padding: 0px;
+    margin: 0px;
+}
+
+div.logoImage{
+  background-image: url(gmtlogo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 71px;
+  width: 320px;
+  z-index: 1;
+}

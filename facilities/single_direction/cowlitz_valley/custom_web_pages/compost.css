@@ -1,0 +1,375 @@
+h1.title{
+	position: relative;
+	margin: auto;
+	width: 740px;
+	padding: 10px;
+	text-align: center;
+}
+
+#content{
+  background-color: #d5f7d2;
+  position: relative;
+  margin: auto;
+  width: 900px;
+  height: 700px;
+  margin-top: 100px;
+  padding: 10px;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
+#login{
+	position: relative;
+    margin: auto;
+    width: 300px;
+    padding: 10px;
+    top: 20%;
+    background-color: lightgrey;
+    border-radius: 25px;
+    border: 1px black solid;
+}
+
+#files, div.settings{
+	position: relative;
+	border-top: 1px solid black;
+	padding: 10px;
+}
+
+p{
+	margin: 0px;
+}
+
+div.settingsContainer {
+	width: 900px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+div.footer {
+	position: relative;
+	width: 900px;
+	padding: 30px 0px 20px 20px;
+	font-size: 24px;
+}
+
+div.productTitle {
+	font-size: 36px;
+	margin-top: 4px;
+	margin-bottom: 10px;
+}
+
+div.productSubTitle {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+div.logoContainer {
+	float: right;
+}
+
+div.logoContainer a {
+	padding: 0px;
+	margin: 0px;
+}
+
+div.logoImage{
+  background-image: url(gmtlogo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 71px;
+  width: 400px;
+  z-index: 1;
+}
+
+div.zoneContainer {
+	margin-right: 10px;
+	margin-left: 20px;
+  float: left;
+	font-size: 20px;
+  text-align: center;
+  position: relative;
+}
+
+div.zone{
+	border: 1px black solid;
+	background-color: grey;
+	font-size: 22px;
+	width: 81px;
+	padding-left: 10px;
+	padding-right: 10px;
+	cursor: pointer;
+}
+
+div.zone p {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+div.zone, div.buttonset{
+	height: 190px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+}
+
+div.blower{
+	/* position: relative; */
+  float: left;
+	z-index: 1;
+	margin: 10px;
+	margin-left: 0px;
+	width: 200px;
+  height: 310px;
+	font-size: 20px;
+}
+
+div.blower, div.zoneContainer {
+  margin-top: 25px;
+}
+
+div.blowerValues {
+	margin: 80px 0px 0px 40px;
+	cursor: pointer;
+}
+div.blowerValues span {
+	margin-bottom: 20px;
+}
+
+div.blowerImage{
+	background-image: url(blower.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: absolute;
+	height: 132px;
+	width: 150px;
+	left: 40px;
+	bottom: 0px;
+	z-index: 1;
+	cursor: pointer;
+}
+
+div.blowerText{
+	position: absolute;
+	font-size: 16px;
+	font-weight: bold;
+	left: 26px;
+	top: 17px;
+}
+
+span.state{
+	position: absolute;
+	font-size: 24px;
+	bottom: 14px;
+	right: 10px;
+	text-align: right;
+	width: 80px;
+}
+
+span{
+	font-weight: bold;
+}
+
+div.pipe{
+	background-color: yellow;
+	border: 1px red solid;
+	position: absolute;
+	width: 674px;
+	height: 36px;
+	bottom: 5px;
+	left: 190px;
+}
+
+div.zonepipe{
+	background-color: yellow;
+	border-left: 1px red solid;
+	border-right: 1px red solid;
+	position: absolute;
+	width: 20px;
+	height: 30px;
+	left: 40px;
+}
+
+div.circle {
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	border: 1px black solid;
+	position: absolute;
+	display: table;
+	left: 25px;
+  top: 270px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+p.damper{
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	text-align: center;
+}
+
+div.control{
+	position: relative;
+	width: 100%;
+	float: left;
+}
+
+div.buttons{
+	position: relative;
+	float: left;
+}
+
+div.buttons{
+	width: 100px;
+	margin-top: 110px;
+}
+
+div.buttonset button{
+	margin-bottom:10px;
+	width: 100px;
+}
+
+table{
+	width: 100%;
+	margin: 5px;
+}
+
+td{
+	padding-left: 5px;
+}
+
+table input{
+	width: 100%;
+}
+
+td.head{
+	text-align: right;
+	width: 30%;
+}
+
+td.foot{
+	width: 13%;
+	padding: 0px;
+}
+/*
+label, input[type='text'], input[type='number']{
+    display: inline-block;
+	resize: none;
+	margin: 5px;
+    text-align: right;
+}
+
+label{
+    width: 30%;
+}
+
+label + input[type='text'], label + input[type='number']{
+    width: 30%;
+	right: 0;
+}
+
+label.checkbox{
+	width: 100%;
+	position: absolute;
+	text-align: left;
+	margin: 0px;
+}
+
+input[type='checkbox']{
+	position: absolute;
+	right: 0px;
+}
+*/
+
+div.tab-pane input {
+	height: 30px;
+}
+
+div.modal-body input[type='number'] {
+	height: 30px;
+}
+
+button.save{
+	position:absolute;
+	left: 643px;
+	bottom: 10px;
+}
+
+a{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+span.value{
+	cursor: pointer;
+}
+
+button.dialog{
+	font-size: 13px;
+}
+div.ui-dialog{
+	background-color:white;
+	padding: 20px;
+	border: 1px solid black;
+}
+
+button.ui-button-icon-only{
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+}
+
+button.ui-button-text-only{
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin-top: 20px;
+  margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+}
+.navbar-wrapper .navbar {
+
+}
+
+/* Remove border and change up box shadow for more contrast */
+.navbar .navbar-inner {
+  border: 0;
+  -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+     -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+          box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+
+/* Downsize the brand/project name a bit */
+.navbar .brand {
+  padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+}
+
+/* Navbar links: increase padding for taller navbar */
+.navbar .nav > li > a {
+  padding: 15px 20px;
+}
+
+/* Offset the responsive button for proper vertical alignment */
+.navbar .btn-navbar {
+  margin-top: 10px;
+}

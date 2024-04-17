@@ -1,0 +1,65 @@
+{
+  "name": "webmacs",
+  "version": "1.0.54",
+  "engines": {
+    "node": "14.10.1",
+    "npm": "6.14.8"
+  },
+  "description": "Web based modular aeration control software",
+  "main": "index.js",
+  "scripts": {
+    "start": "PORT=4000 react-scripts start",
+    "build": "react-scripts build && node copy_build.js",
+    "test": "jest",
+    "heroku-postbuild": "react-scripts build && node copy_build.js"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "testURL": "http://localhost:3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:CypressMillCo/webmacs.git"
+  },
+  "author": "Jacob Senecal",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/CypressMillCo/webmacs#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-session": "^1.15.5",
+    "html2canvas": "^1.0.0-alpha.10",
+    "js-file-download": "^0.4.1",
+    "jsmart": "^2.14.0",
+    "jspdf": "^1.5.3",
+    "jszip": "^3.2.2",
+    "qs": "^6.9.1",
+    "react": "^16.12.0",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.12.0",
+    "react-js-pagination": "^3.0.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^1.1.0",
+    "react-vis": "^1.11.7",
+    "victory": "^0.25.5"
+  },
+  "devDependencies": {
+    "babel-jest": "^22.1.0",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "canvas": "^2.6.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-matchers": "^4.1.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.1.4",
+    "jest-enzyme": "^4.1.1"
+  },
+  "proxy": "http://localhost:3000"
+}

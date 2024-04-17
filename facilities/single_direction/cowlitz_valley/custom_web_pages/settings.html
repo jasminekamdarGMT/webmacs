@@ -1,0 +1,216 @@
+{if $user->hasAccess(255)}
+{$sqlite->setAccess(255)}
+{$user->load()}
+{$io->load()}
+{$reg->load()}
+{$evnt->load()}
+<html>
+	<head>
+		<title>Settings</title>
+		<script src="/javascript/jquery-1.11.1.min.js"></script>
+		<script src="/javascript/x600m.js"></script>
+		<script src="/compost.js"></script>
+		<script src="/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="compost.css" />
+	</head>
+	<body>
+
+		<!-- NAVBAR
+	  ================================================== -->
+	  <div class="navbar-wrapper">
+	    <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+	    <div class="container">
+
+	      <div class="navbar navbar-inverse">
+	        <div class="navbar-inner">
+	          <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+	          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          {$sqlite->open("/usb/settings.db")}
+	          {$sqlite->exec("SELECT * FROM settings WHERE name='FacilityName';")}
+	          {for $i=0 to ($sqlite->rowsCount-1)}
+	            <a class="brand" href="#">{$sqlite->rows[$i]['value']}</a>
+	          {/for}
+	          {$sqlite->close()}
+	          <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+	          <div class="nav-collapse collapse">
+	            <ul class="nav pull-right">
+	              <li><a href="index.html">Overview</a></li>
+	              <li class="active"><a href="#"><i class="icon-wrench icon-white"></i> Settings</a></li>
+	            </ul>
+	          </div><!--/.nav-collapse -->
+	        </div><!-- /.navbar-inner -->
+	      </div><!-- /.navbar -->
+
+	    </div> <!-- /.container -->
+	  </div><!-- /.navbar-wrapper -->
+
+		<div class='container-fluid main'>
+			<div class="settingsContainer">
+				<div class="tabbable">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#blowerSettingsTab" data-toggle="tab">Blower Control</a></li>
+						<li><a href="#zoneSettingsTab" data-toggle="tab">Zone Control</a></li>
+						<li><a href="#userSettingsTab" data-toggle="tab">User Setup</a></li>
+						<li><a href="#graphSettingsTab" data-toggle="tab">Files & Graphing</a></li>
+					</ul>
+					<div class="tab-content">
+				    <div class="tab-pane active" id="blowerSettingsTab">
+							<fieldset>
+								<legend>Blower Settings</legend>
+						    <label for="PressureSetPoint">Pressure Set Point (Blower 1)</label>
+								<div class="input-append">
+					      	<input id='PressureSetPoint' type='number' />
+									<span class="add-on">{$io->units("blower1pressure")}</span>
+								</div>
+								<label for="PressureSetPoint2">Pressure Set Point (Blower 2)</label>
+								<div class="input-append">
+					      	<input id='PressureSetPoint2' type='number' />
+									<span class="add-on">{$io->units("blower1pressure")}</span>
+								</div>
+						    <label for="MinVFDSpeed">Min VFD Speed</label>
+								<div class="input-append">
+					      	<input id='MinVFDSpeed' type='number' />
+									<span class="add-on">%</span>
+								</div>
+							</fieldset>
+
+							<fieldset id='advancedB' hidden>
+							<legend>Blower PID Settings</legend>
+							<label>Gain</label><input id='BlowerGain' type='number' /></br>
+							<label>Integral</label><input id='BlowerIntegral' type='number' /></br>
+							<label>Derivative</label><input id='BlowerDerivative' type='number' /></br>
+							</fieldset>
+							<br />
+							<button class="btn" id='showB' onclick='$("#advancedB").show(); $("#hideB").show(); $("#showB").hide();'><i class="icon-chevron-down"></i> Show PID Settings</button>
+							<button class="btn" id='hideB' onclick='$("#advancedB").hide(); $("#showB").show(); $("#hideB").hide();' style="display: none;"><i class="icon-chevron-up"></i> Hide PID Settings</button>
+							<button class='btn btn-primary' onclick='setBlowerSettings();'>Save Blower Settings</button>
+				    </div>
+						<div class="tab-pane" id="zoneSettingsTab">
+							<fieldset>
+								<legend>Zone Regime Settings</legend>
+								<table>
+									<tr><td class="head"></td><th>Regime 1</th><th>Regime 2</th><th>Regime 3</th><td class="foot"></td></tr>
+									<tr>
+										<td class="head">Temperature Set Point:</td>
+										<td><input id='R1TempSetPoint' type='number' /></td>
+										<td><input id='R2TempSetPoint' type='number' /></td>
+										<td style="padding-right: 7px;"><input id='R3TempSetPoint' type='number' /></td>
+										<td class="foot">°{$io->units("zone1Temp")}</td>
+									</tr>
+									<tr>
+										<td class="head">Duration:</td>
+										<td><input id='R1Duration' type='number' /></td>
+										<td><input id='R2Duration' type='number' /></td>
+										<td></td>
+										<td class="foot">Days</td>
+									</tr>
+								</table>
+							</fieldset>
+							<fieldset>
+								<legend>Zone Global Settings</legend>
+								<label>Minimum Damper Value</label>
+								<div class="input-append">
+									<input id='MinDamperValue' type='number' />
+									<span class="add-on">%</span>
+								</div>
+								<label>High Temperature Alarm</label>
+								<div class="input-append">
+									<input id='MaxTemperatureAlarm' type='number' />
+									<span class="add-on">°{$io->units("zone1Temp")}</span>
+								</div>
+								<label>Low Temperature Alarm</label>
+								<div class="input-append">
+									<input id='MinTemperatureAlarm' type='number' />
+									<span class="add-on">°{$io->units("zone1Temp")}</span>
+								</div>
+							</fieldset>
+							<fieldset id='advanced' hidden>
+								<legend>Zone PID Settings</legend>
+								<label>Gain</label><input id='ZoneGain' type='number' /></br>
+								<label>Integral</label><input id='ZoneIntegral' type='number' /></br>
+								<label>Derivative</label><input id='ZoneDerivative' type='number' /></br>
+								<label>Rate</label>
+								<div class="input-append">
+									<input id='ZoneRate' type='number' />
+									<span class="add-on">Seconds</span>
+								</div>
+							</fieldset>
+							<br />
+							<button class='btn' id='show' onclick='$("#advanced").show(); $("#hide").show(); $("#show").hide();'><i class="icon-chevron-down"></i> Show PID Settings</button>
+							<button class='btn' id='hide' onclick='$("#advanced").hide(); $("#show").show(); $("#hide").hide();' style="display: none;"><i class="icon-chevron-up"></i> Hide PID Settings</button>
+							<button class='btn btn-primary' onclick='setZoneSettings();'>Save Zone Settings</button>
+						</div>
+						<div class="tab-pane" id="userSettingsTab">
+							<fieldset>
+								<legend>Standard</legend>
+								<label>Username *</label><input id='Username' type='text' value="{$user->name()}" disabled /></br>
+								<label>Facility Name *</label><input id='FacilityName' type='text' {if $user->hasAccess(1)}{else}disabled{/if} /></br>
+								<label>Email/SMS Address *</label><input id='Email' type='text' value="{$user->email()}" disabled /></br>
+								<label>Temperature Units *</label><input id='Temperature' type='text' value="°{$io->units('zone1Temp')}" disabled /></br>
+								<label>Data Logging Rate</label>
+								<div class="input-append">
+									<input id='DataLoggingRate' type='number' />
+									<span class="add-on">Minutes</span>
+								</div>
+							</fieldset>
+							<p><i>* These settings can only be changed by a system administrator.</i></p>
+							<br />
+							<button class="btn btn-primary" id='save' onclick='setUserSettings();' style='bottom: 10px;'>Save User Settings</button>
+						</div>
+						<div class="tab-pane" id="graphSettingsTab">
+							{$sqlite->open("/usb/batch_files.db")}
+							{$sqlite->exec("SELECT * FROM batch_files ORDER BY id DESC;")}
+							<fieldset>
+							<legend>File List</legend>
+							<ul>
+							{for $i=0 to ($sqlite->rowsCount-1)}
+								<li>{$sqlite->rows[$i]['name']}
+									<a href="javascript:deleteFile('{$sqlite->rows[$i]['name']}')">Delete</a>
+									<a href="/downloadFile.php?filename={$sqlite->rows[$i]['name']}">Download</a>
+									<a href="javascript:openFile('{$sqlite->rows[$i]['name']}');">View File</a>
+									<a href="javascript:openGraph('{$sqlite->rows[$i]['name']}');">View Graph</a>
+								</li>
+							{/for}
+							{$sqlite->close()}
+							</ul></fieldset>
+						</div>
+					</div>
+				</div>
+
+				<script>
+					getSettings();
+				</script>
+
+				<hr />
+			</div>
+		</div>
+		
+		<div class="container">
+		  <div class="container-fliud footer">
+				<div class="logoContainer">
+					<a href="http://compostingtechnology.com" target="_blank"><div class="logoImage"></div></a>
+				</div>
+				<div class="productTitle">WebMACS</div>
+				<div class="productSubTitle">Modular Aeration</div>
+				<div class="productSubTitle">Control System</div>
+		  </div>
+		</div>
+	</body>
+</html>
+{else}
+<html>
+<head>
+	<title>Access denied</title>
+</head>
+<body>
+	<p>Access denied</p>
+	<script>window.location.href = "loginScreen.html";</script>
+</body>
+</html>
+{/if}

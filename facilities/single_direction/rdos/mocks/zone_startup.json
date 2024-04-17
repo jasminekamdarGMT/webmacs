@@ -1,0 +1,6 @@
+[
+  {"id":"1","name":"zone01control","state":"1"},
+  {"id":"2","name":"zone02control","state":"1"},
+  {"id":"3","name":"zone01filename","state":"07_30_2017_zone01.csv"},
+  {"id":"4","name":"zone02filename","state":"07_29_2017_zone02.csv"}
+]

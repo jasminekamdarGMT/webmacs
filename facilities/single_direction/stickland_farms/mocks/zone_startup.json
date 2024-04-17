@@ -1,0 +1,22 @@
+[
+  {"id":"1","name":"zone01control","state":"1"},
+  {"id":"2","name":"zone02control","state":"1"},
+  {"id":"3","name":"zone03control","state":"1"},
+  {"id":"4","name":"zone04control","state":"1"},
+  {"id":"5","name":"zone05control","state":"1"},
+  {"id":"1","name":"zone06control","state":"1"},
+  {"id":"2","name":"zone07control","state":"1"},
+  {"id":"3","name":"zone08control","state":"1"},
+  {"id":"4","name":"zone09control","state":"1"},
+  {"id":"5","name":"zone10control","state":"1"},
+  {"id":"6","name":"zone01filename","state":"07_30_2017_zone01.csv"},
+  {"id":"7","name":"zone02filename","state":"07_29_2017_zone02.csv"},
+  {"id":"8","name":"zone03filename","state":"07_29_2017_zone03.csv"},
+  {"id":"9","name":"zone04filename","state":"07_29_2017_zone04.csv"},
+  {"id":"10","name":"zone05filename","state":"07_29_2017_zone05.csv"},
+  {"id":"6","name":"zone06filename","state":"07_30_2017_zone06.csv"},
+  {"id":"7","name":"zone07filename","state":"07_29_2017_zone07.csv"},
+  {"id":"8","name":"zone08filename","state":"07_29_2017_zone08.csv"},
+  {"id":"9","name":"zone09filename","state":"07_29_2017_zone09.csv"},
+  {"id":"10","name":"zone10filename","state":"07_29_2017_zone10.csv"}
+]

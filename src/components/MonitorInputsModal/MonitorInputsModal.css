@@ -1,0 +1,11 @@
+.MonitorInputsModal {
+    width: 600px;
+    margin-left: -300px;
+}
+
+@media (max-width: 770px) {
+    .MonitorInputsModal {
+        width: auto;
+        margin-left: auto;
+    }
+  }

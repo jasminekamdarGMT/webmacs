@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Graph</title>
+<link rel="stylesheet" type="text/css" href="/graph.css">
+<link rel="stylesheet" href="/css/themes/smoothness/jquery-ui-1.10.3.custom.min.css">
+<link rel="stylesheet" type="text/css" href="/css/flot/flot.css">
+<script src="/html2canvas.js"></script>	
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<script src="/javascript/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="/javascript/jquery.ui.touch-punch.min.js"></script>
+<script src="/javascript/flot/jquery.flot.min.js"></script>	
+<script src="/javascript/flot/jquery.flot.time.min.js"></script>
+<script src="/javascript/x600m.js"></script>
+<script src="/compost.js"></script>
+
+<script>
+$(document).ready(function () {
+	zone = window.name.match(/zone.\.csv/);
+	if(zone == null){
+		zone = window.name.match(/zone..\.csv/);
+		zone = zone[0].substring(0,6);
+	}else{
+		zone = zone[0].substring(0,5);
+	}
+	$("#title").html(zone.toUpperCase());
+	loadGraph(window.name);
+});
+</script>
+</head>
+<body>
+	<h1 style="font-size: 20px;" id="title"></h1>
+    <div id="flot-placeholder" style="width:90%;height:95%;margin:0 auto;"></div>
+	<a style="position: absolute; left: 10px; top: 10px;"href="" id="save">Save Graph</a>
+</body>
+</html>

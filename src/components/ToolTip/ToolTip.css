@@ -1,0 +1,35 @@
+.settings-tooltip {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 4px;
+  }
+  
+  .settings-tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #000;
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    transform: translateY(calc(-50% - 6px));
+    left: 180%;
+  }
+  
+  .settings-tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #000 transparent transparent;
+  }
+  
+  .settings-tooltip:hover .settings-tooltiptext {
+    visibility: visible;
+  }
+  

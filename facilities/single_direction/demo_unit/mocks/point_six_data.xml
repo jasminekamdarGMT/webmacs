@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Point_Manager id="00:90:C2:EF:CA:D1" ts="04/10/18 16:07:51" NoSensors="1">
+<Sensor id="1" type="28" snid="0000000040B04AE3" batt="100" battlife="10/19/19">
+<Age>29</Age>
+<Status>0</Status>
+<Service>0</Service>
+<Point id="1" type="Analog 1" dtype="1" ptid="0000000040B04AE3_1" index="1"><Value>62.9</Value>
+</Point>
+<Point id="2" type="Analog 2" dtype="1" ptid="0000000040B04AE3_2" index="2"><Value>62.7</Value>
+</Point>
+</Sensor>
+</Point_Manager>

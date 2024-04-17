@@ -1,0 +1,12 @@
+[
+  {"id":"1","name":"zone01control","state":"1"},
+  {"id":"2","name":"zone02control","state":"1"},
+  {"id":"3","name":"zone03control","state":"1"},
+  {"id":"4","name":"zone04control","state":"1"},
+  {"id":"5","name":"zone05control","state":"1"},
+  {"id":"6","name":"zone01filename","state":"02_14_2020_zone01.csv"},
+  {"id":"7","name":"zone02filename","state":"02_14_2020_zone02.csv"},
+  {"id":"8","name":"zone03filename","state":"02_14_2020_zone03.csv"},
+  {"id":"9","name":"zone04filename","state":"02_14_2020_zone04.csv"},
+  {"id":"10","name":"zone05filename","state":"02_14_2020_zone05.csv"}
+]

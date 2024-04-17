@@ -1,0 +1,71 @@
+div.facilityLayoutPump {
+    position: absolute;
+    bottom: 80px;
+    right: 200px;
+    width: 170px;
+    height: 70px;
+    cursor: pointer;
+}
+
+.facilityLayoutPump div.pumpMotor {
+    position: absolute;
+    border: 1px black solid;
+    border-radius: 10px;
+    left: 0px;
+    bottom: 0px;
+    width: 120px;
+    height: 60px;
+    background-color: #08c;
+}
+
+.facilityLayoutPump div.pumpNeck {
+    position: absolute;
+    border: 1px black solid;
+    left: 120px;
+    bottom: 15px;
+    width: 10px;
+    height: 30px;
+    background-color: #08c;
+}
+
+.facilityLayoutPump div.pumpBody {
+    position: absolute;
+    border: 1px black solid;
+    border-radius: 20px;
+    left: 130px;
+    bottom: 0px;
+    width: 40px;
+    height: 60px;
+    background-color: #08c;
+}
+
+.facilityLayoutPump div.pumpFlange {
+    position: absolute;
+    border: 1px black solid;
+    border-radius: 2px;
+    left: 130px;
+    bottom: 60px;
+    width: 40px;
+    height: 10px;
+    background-color: #08c;
+}
+
+.facilityLayoutPump div.pumpLabel {
+    position: absolute;
+    width: 120px;
+    top: 6px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.facilityLayoutPump div.pumpStatus {
+    position: absolute;
+    width: 120px;
+    top: 30px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

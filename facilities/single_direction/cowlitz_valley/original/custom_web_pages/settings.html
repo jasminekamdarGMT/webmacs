@@ -1,0 +1,119 @@
+{if $user->hasAccess(255)}
+{$sqlite->setAccess(255)}
+{$user->load()}
+{$io->load()}
+{$reg->load()}
+{$evnt->load()}
+<html>
+	<head>
+		<title>Settings</title>
+		<script src="/javascript/jquery-1.11.1.min.js"></script>
+		<script src="/javascript/x600m.js"></script>
+		<script src="/compost.js"></script>
+		<link rel="stylesheet" type="text/css" href="compost.css" />
+	</head>
+	<body>
+	<div class='main'>
+		<h1>Compost Monitoring Settings</h1>
+		<div id="blower" class="tab" style='background-color: lightgrey;'><a onclick='setPage("blower");'>Blower Control</a></div>
+		<div id="zone" class="tab"><a onclick='setPage("zone");'>Zone Control</a></div>
+		<div id="user" class="tab"><a onclick='setPage("user");'>User Setup</a></div>
+		<div id="graph" class="tab"><a onclick='setPage("graph");'>Files & Graphing</a></div>
+		</br></br>
+		<div class="settings" id="blowerDiv">
+			<fieldset>
+			<legend>Standard</legend>
+			<label>Pressure Set Point: </label><input id='PressureSetPoint' type='number' /> {$io->units("blower1pressure")}</br>
+			<label>Min VFD Speed: </label><input id='MinVFDSpeed' type='number' /> %</br>
+			</fieldset>
+			<fieldset id='advancedB' hidden>
+			<legend>Advanced</legend>
+			<label>Gain: </label><input id='BlowerGain' type='number' /></br>
+			<label>Integral: </label><input id='BlowerIntegral' type='number' /></br>
+			<label>Derivative: </label><input id='BlowerDerivative' type='number' /></br>
+			</fieldset>
+			<button id='showB' onclick='$("#advancedB").show(); $("#hideB").show(); $("#showB").hide();'>Show PID Settings</button>
+			<button id='hideB' onclick='$("#advancedB").hide(); $("#showB").show(); $("#hideB").hide();' hidden>Hide PID Settings</button>
+			<button class='save' onclick='setBlowerSettings();'>Save</button>
+		</div>
+		<div class="settings" id="zoneDiv" hidden>
+			<fieldset>
+			<legend>Standard</legend>
+			<table>
+				<tr><td class="head"></td><th>Regime 1</th><th>Regime 2</th><th>Regime 3</th><td class="foot"></td></tr>
+				<tr>
+					<td class="head">Temperature Set Point:</td>
+					<td><input id='R1TempSetPoint' type='number' /></td>
+					<td><input id='R2TempSetPoint' type='number' /></td>
+					<td style="padding-right: 7px;"><input id='R3TempSetPoint' type='number' /></td>
+					<td class="foot">°{$io->units("zone1Temp")}</td>
+				</tr>
+				<tr>
+					<td class="head">Duration:</td>
+					<td><input id='R1Duration' type='number' /></td>
+					<td><input id='R2Duration' type='number' /></td>
+					<td></td>
+					<td class="foot">Days</td>
+				</tr>
+			</table>
+			<label>Minimum Damper Value: </label><input id='MinDamperValue' type='number' /> %</br>
+			<label>High Temperature Alarm: </label><input id='MaxTemperatureAlarm' type='number' /> °{$io->units("zone1Temp")}</br>
+			<label>Low Temperature Alarm: </label><input id='MinTemperatureAlarm' type='number' /> °{$io->units("zone1Temp")}</br>
+			</fieldset>
+			<fieldset id='advanced' hidden>
+			<legend>Advanced</legend>
+			<label>Gain: </label><input id='ZoneGain' type='number' /></br>
+			<label>Integral: </label><input id='ZoneIntegral' type='number' /></br>
+			<label>Derivative: </label><input id='ZoneDerivative' type='number' /></br>
+			<label>Rate: </label><input id='ZoneRate' type='number' /> Seconds</br>
+			</fieldset>
+			<button id='show' onclick='$("#advanced").show(); $("#hide").show(); $("#show").hide();'>Show PID Settings</button>
+			<button id='hide' onclick='$("#advanced").hide(); $("#show").show(); $("#hide").hide();' hidden>Hide PID Settings</button>
+			<button class='save' onclick='setZoneSettings();'>Save</button>
+		</div>
+		<div class="settings" id="userDiv" hidden>
+			<fieldset>
+			<legend>Standard</legend>
+			<label>Username:* </label><input id='Username' type='text' value="{$user->name()}" disabled /></br>
+			<label>Facility Name:* </label><input id='FacilityName' type='text' {if $user->hasAccess(1)}{else}disabled{/if} /></br>
+			<label>Email/SMS Address:* </label><input id='Email' type='text' value="{$user->email()}" disabled /></br>
+			<label>Temperature Units:* </label><input id='Temperature' type='text' value="°{$io->units('zone1Temp')}" disabled /></br>
+			<label>Data Logging Rate:&nbsp;&nbsp; </label><input id='DataLoggingRate' type='number' /> Minutes</br>
+			</fieldset>
+			<p>* These settings can only be changed by a system administrator.</p>
+			<button id='save' onclick='setUserSettings();' style='bottom: 10px;'>Save</button>
+		</div>
+		<div class="settings" id='graphDiv' hidden>
+			{$sqlite->open("/usb/batch_files.db")}
+			{$sqlite->exec("SELECT * FROM batch_files ORDER BY id DESC;")}
+			<fieldset>
+			<legend>File List</legend>
+			<ul>
+			{for $i=0 to ($sqlite->rowsCount-1)}	
+				<li>{$sqlite->rows[$i]['name']} 
+					<a href="javascript:deleteFile('{$sqlite->rows[$i]['name']}')">Delete</a> 
+					<a href="/downloadFile.php?filename={$sqlite->rows[$i]['name']}">Download</a> 
+					<a href="javascript:openFile('{$sqlite->rows[$i]['name']}');">View File</a> 
+					<a href="javascript:openGraph('{$sqlite->rows[$i]['name']}');">View Graph</a>
+				</li>      
+			{/for}
+			{$sqlite->close()}
+			</ul></fieldset>
+		</div>
+		<script>
+			getSettings();
+		</script>
+	</div>
+	</body>
+</html>
+{else}
+<html>
+<head>
+	<title>Access denied</title>
+</head>
+<body>
+	<p>Access denied</p>
+	<script>window.location.href = "loginScreen.html";</script>
+</body>
+</html>
+{/if}

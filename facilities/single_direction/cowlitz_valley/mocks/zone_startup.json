@@ -1,0 +1,11 @@
+[
+  {"id":"1","name":"zone1filename","state":"\/usb\/07_30_2017_zone01.csv"},
+  {"id":"2","name":"zone2filename","state":"\/usb\/07_29_2017_zone02.csv"},
+  {"id":"3","name":"zone3filename","state":"\/usb\/07_29_2017_zone03.csv"},
+  {"id":"4","name":"zone4filename","state":"\/usb\/07_29_2017_zone04.csv"},
+  {"id":"5","name":"zone5filename","state":"\/usb\/07_29_2017_zone05.csv"},
+  {"id":"6","name":"zone6filename","state":"\/usb\/07_29_2017_zone06.csv"},
+  {"id":"7","name":"zone7filename","state":"\/usb\/07_29_2017_zone07.csv"},
+  {"id":"8","name":"zone8filename","state":"\/usb\/07_29_2017_zone08.csv"},
+  {"id":"9","name":"zone9filename","state":"\/usb\/07_29_2017_zone09.csv"}
+]

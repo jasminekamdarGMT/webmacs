@@ -1,0 +1,184 @@
+.FacilityCardLayout .well {
+    padding-top: 0px;
+    min-height: 288px;
+    padding-bottom: 10px;
+}
+
+.FacilityCardLayout > .row > div {
+    min-height: 284px;
+}
+
+.FacilityCardLayout .well .label {
+    margin-top: 20px;
+}
+
+.FacilityCardLayout .well .label {
+    margin-left: 3px;
+}
+
+.FacilityCardLayout .well .loading-container {
+    padding-left: 19px;
+    width: 93px;
+}
+
+.FacilityCardLayout .blower-display {
+    padding: 80px 10px 0px 0px;
+    /* border: 1px dashed lightgray; */
+}
+
+.FacilityCardLayout .blower-display b {
+    font-size: 24px;
+    color: navy;
+}
+
+.FacilityCardLayout .biofilter-status-items {
+  /* border: 1px solid green; */
+}
+
+.FacilityCardLayout .bio-label-group {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  row-gap: 12px;
+  justify-content: start;
+  /* border: 1px dashed orange; */
+}
+
+.FacilityCardLayout .biofilter-status-items .biodamper-status-group {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  justify-content: start;
+  /* border: 1px dashed orangered; */
+}
+
+.FacilityCardLayout .biofilter-status-items .bioblower-status {
+  margin: 56px 0 8px 0;
+  /* border: 1px dashed pink; */
+}
+
+.FacilityCardLayout .biofilter-status-items .label {
+  margin-top: 0;
+}
+
+.FacilityCardLayout .duct-pressure-display b {
+    font-size: 24px;
+    color: navy;
+}
+
+.FacilityCardLayout .biofilter-pressure-display b {
+    font-size: 24px;
+    color: navy;
+}
+
+.FacilityCardLayout .biopressure-group {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  /* border: 1px solid greenyellow; */
+}
+
+.FacilityCardLayout .biodamper-group {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  /* border: 1px solid lightseagreen; */
+}
+
+.FacilityCardLayout .duct-pressure-display {
+    margin-top: 12px;
+}
+
+.FacilityCardLayout .with-manifold-info .blower-display {
+    padding: 12px 10px 0px 0px;
+}
+
+.FacilityCardLayout .active-zone {
+    background-color: #00BB00;
+}
+
+.FacilityCardLayout .inactive-zone {
+    background-color: #999;
+}
+
+.FacilityCardLayout .paused-zone {
+    background-color: #A6E29F;
+}
+
+.FacilityCardLayout .load-zone-active {
+    background-color: #EED202;
+}
+
+.FacilityCardLayout .btn {
+    margin-right: 6px;
+}
+
+.FacilityCardLayout li a {
+    cursor: default;
+}
+
+.FacilityCardLayout div.clickable-area {
+    cursor: pointer;
+}
+
+.FacilityCardLayout .table-temps {
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.FacilityCardLayout .table-temps th {
+    text-align: left;
+}
+
+.FacilityCardLayout .normal-temp {
+    background-color: lightgreen;
+}
+
+.FacilityCardLayout .warm-temp {
+    background-color: orange;
+}
+
+.FacilityCardLayout .reference-temp {
+    background-color: lightblue;
+}
+
+.FacilityCardLayout .wireless-sensor-warning {
+    color: #f89406;
+}
+
+.FacilityCardLayout .wireless-sensor-error {
+    color: red;
+}
+
+.FacilityCardLayout .label-damper-status {
+  background-color: #9b59b6;
+}
+
+.FacilityCardLayout .batch-age {
+  position: relative;
+  max-width: 96%;
+}
+
+.FacilityCardLayout .pfrp-row {
+  margin: 10px 0;
+  height: 18px;
+}
+
+.FacilityCardLayout .zone-temps-table-container {
+  margin-top: 20px;
+  min-height: 50px;
+}
+
+.FacilityCardLayout .table-condensed th, .table-condensed td {
+  padding: 4px 4px;
+}
+
+.FacilityCardLayout .label-irrigation {
+  margin-top: 0px !important;
+  font-weight: bold;
+}
+.FacilityCardLayout .card-estop-active {
+  border-color: red;
+  border-width: 2px;
+}

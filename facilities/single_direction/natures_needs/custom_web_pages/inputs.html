@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+{if $user->hasAccess(255)}
+{$sqlite->setAccess(3)}
+{$io->load()}
+{$reg->load()}
+{$evnt->load()}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WebMACS Inputs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/bootstrap.min.css" rel="stylesheet">
+    <link href="/webmacs.css" rel="stylesheet">
+    <link href="/bootstrap-responsive.min.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        {$sqlite->open("/usb/settings.db")}
+        {$sqlite->exec("SELECT * FROM settings WHERE name='FacilityName';")}
+        {for $i=0 to ($sqlite->rowsCount-1)}
+          <a class="brand" href="/index.html">{$sqlite->rows[$i]['value']}</a>
+        {/for}
+        {$sqlite->close()}
+        <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+			<li><a href="/index.html">Map</a></li>
+            <li><a href="/status.html">Status</a></li>
+            <li><a href="/settings.html">Settings</a></li>
+            <li><a href="/logs.html">Logs</a></li>
+            <!--li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+                </ul>
+            </li-->
+            </ul>
+        </div><!--/.nav-collapse -->
+        </div>
+    </div>
+    </div>
+
+    <div id="content" class='container'>
+        <div class='row'>
+            <div class="span6">
+                <h3>Monitor Input Values</h3>
+
+                <table class="table">
+                    <tr>
+                        <td>Zone 14 Temp</td>
+                        <td><b id="zone14temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 15 Temp</td>
+                        <td><b id="zone15temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 16 Temp</td>
+                        <td><b id="zone16temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 17 Temp</td>
+                        <td><b id="zone17temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 18 Temp</td>
+                        <td><b id="zone18temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 19 Temp</td>
+                        <td><b id="zone19temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 20 Temp</td>
+                        <td><b id="zone20temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 21 Temp</td>
+                        <td><b id="zone21temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 22 Temp</td>
+                        <td><b id="zone22temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 23 Temp</td>
+                        <td><b id="zone23temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 24 Temp</td>
+                        <td><b id="zone24temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 25 Temp</td>
+                        <td><b id="zone25temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Zone 26 Temp</td>
+                        <td><b id="zone26temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Duct 14/15 Temp</td>
+                        <td><b id="duct45temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Duct 16 Temp</td>
+                        <td><b id="duct16temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Duct 17/18 Temp</td>
+                        <td><b id="duct78temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Duct 19/20 Temp</td>
+                        <td><b id="duct90temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Duct 21/22 Temp</td>
+                        <td><b id="duct12temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Duct 23/24 Temp</td>
+                        <td><b id="duct34temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Duct 25/26 Temp</td>
+                        <td><b id="duct56temp"></b> °{$io->units("zone14Temp")}</td>
+                    </tr>
+                    <tr>
+                        <td>Blower 14/15 Fault</td>
+                        <td><b id="blower45fault"></b></td>
+                    </tr>
+                    <tr>
+                        <td>Blower 16 Fault</td>
+                        <td><b id="blower16fault"></b></td>
+                    </tr>
+                    <tr>
+                        <td>Blower 17/18 Fault</td>
+                        <td><b id="blower78fault"></b></td>
+                    </tr>
+                    <tr>
+                        <td>Blower 19/20 Fault</td>
+                        <td><b id="blower90fault"></b></td>
+                    </tr>
+                    <tr>
+                        <td>Blower 21/22 Fault</td>
+                        <td><b id="blower12fault"></b></td>
+                    </tr>
+                    <tr>
+                        <td>Blower 23/24 Fault</td>
+                        <td><b id="blower34fault"></b></td>
+                    </tr>
+                    <tr>
+                        <td>Blower 25/26 Fault</td>
+                        <td><b id="blower56fault"></b></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="container-fliud footer">
+            <hr>
+            <div class="productTitles">
+                <div class="productTitle">WebMACS</div>
+                <div class="productSubTitle">Modular Aeration</div>
+                <div class="productSubTitle">Control System</div>
+            </div>
+            <div class="logoContainer">
+                <a href="http://compostingtechnology.com" target="_blank"><div class="logoImage"></div></a>
+            </div>
+		</div>
+    </div>
+        
+        <script src="/javascript/jquery-1.11.1.min.js"></script>
+        <script src="/bootstrap.min.js"></script>
+        <script src="/javascript/x600m.js"></script>
+        <script src="/webmacs.js"></script>
+
+        <script>
+            // update the IO fields using data from state.json every 3 seconds
+			currentPage.refreshIOFields("state.json", 3, "content");
+        </script>
+    </body>
+</html>
+{else}
+<html>
+<head>
+	<title>Access denied</title>
+</head>
+<body>
+	<p>Access denied</p>
+	<script>window.location.href = "loginScreen.html";</script>
+</body>
+</html>
+{/if}

@@ -1,0 +1,20 @@
+[
+  {"id":"1","name":"DataLoggingRate","value":"120"},
+  {"id":"2","name":"FacilityName","value":"Bloedel"},
+  {"id":"3","name":"BlowerGain","value":"1"},
+  {"id":"4","name":"BlowerIntegral","value":"1"},
+  {"id":"5","name":"BlowerDerivative","value":"0.3"},
+  {"id":"6","name":"BlowerDerivativeTime","value":"2"},
+  {"id":"7","name":"BlowerRate","value":"2"},
+  {"id":"8","name":"Regime1TempSetPoint","value":"131"},
+  {"id":"9","name":"Regime2TempSetPoint","value":"144"},
+  {"id":"10","name":"Regime3TempSetPoint","value":"134"},
+  {"id":"11","name":"Regime1Duration","value":"5"},
+  {"id":"12","name":"Regime2Duration","value":"7"},
+  {"id":"13","name":"BlowerCycleOnTime","value":"55"},
+  {"id":"14","name":"BlowerCycleOffTime","value":"5"},
+  {"id":"15","name":"MaxTemperatureAlarm","value":"80"},
+  {"id":"16","name":"MinTemperatureAlarm","value":"0"},
+  {"id":"17","name":"GraphReferenceTemp","value":"131"},
+  {"id":"18","name":"GraphReferenceTempLabel","value":"PFRP Time"}
+]

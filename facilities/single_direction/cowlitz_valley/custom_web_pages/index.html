@@ -1,0 +1,300 @@
+{if $user->hasAccess(255)}
+{$sqlite->setAccess(3)}
+{$io->load()}
+{$reg->load()}
+{$evnt->load()}
+<html>
+	<head>
+		<title>Compost Monitoring</title>
+		<script src="/javascript/jquery-1.11.1.min.js"></script>
+		<script src="/jquery-ui.js"></script>
+		<script src="/javascript/x600m.js"></script>
+		<script src="/compost.js"></script>
+    <script src="/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="compost.css" />
+	</head>
+	<body>
+
+  <!-- NAVBAR
+  ================================================== -->
+  <div class="navbar-wrapper">
+    <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+    <div class="container">
+
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          {$sqlite->open("/usb/settings.db")}
+          {$sqlite->exec("SELECT * FROM settings WHERE name='FacilityName';")}
+          {for $i=0 to ($sqlite->rowsCount-1)}
+            <a class="brand" href="#">{$sqlite->rows[$i]['value']}</a>
+          {/for}
+          {$sqlite->close()}
+          <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              <li class="active"><a href="#">Overview</a></li>
+              <li><a href="settings.html"><i class="icon-wrench icon-white"></i> Settings</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!-- /.navbar-inner -->
+      </div><!-- /.navbar -->
+
+    </div> <!-- /.container -->
+  </div><!-- /.navbar-wrapper -->
+
+	<div class='container-fluid main'>
+		<div id="content">
+			<div class='control'>
+				<div class='blower'></br>
+					<div class='blowerValues' onclick="setBlowerValue('1');">
+						Pressure: <span id='blower1pressure'>--</span> {$io->units("blower1pressure")}</br>
+						Speed: <span id='blower1Speed'>--</span> {$io->units("blower1Speed")}</br>
+						Control: <span id='blower1mode'>--</span></br>
+					</div>
+				  <div class='blowerImage' onclick="setBlowerValue('1');"><span id="blower1state" class="state"></span><div class="blowerText">BLOWER 1</div></div>
+				  <div class='pipe'></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone1name">ZONE 1</p>
+          <div class='zone' id='zone1' onclick="clickZone('1')"><p id="zone1TempData"><span id='zone1lvtemp'>--</span>°{$io->units("zone1Temp")}</p><p id="zone1data">REG #<span id='zone1regime'>--</span></p><p id='zone1age'><span id='zone1date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone1DamperCircle' class='circle' onclick="setValue('1')"><p class='damper'><span id='zone1Damper'>--</span>{$io->units("zone1Damper")}</p></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone2name">ZONE 2</p>
+          <div class='zone' id='zone2' onclick="clickZone('2')"><p id="zone2TempData"><span id='zone2lvtemp'>--</span>°{$io->units("zone2Temp")}</p><p id="zone2data">REG #<span id='zone2regime'>--</span></p><p id='zone2age'><span id='zone2date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone2DamperCircle' class='circle' onclick="setValue('2')"><p class='damper'><span id='zone2Damper'>--</span>{$io->units("zone2Damper")}</p></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone3name">ZONE 3</p>
+          <div class='zone' id='zone3' onclick="clickZone('3')"><p id="zone3TempData"><span id='zone3lvtemp'>--</span>°{$io->units("zone3Temp")}</p><p id="zone3data">REG #<span id='zone3regime'>--</span></p><p id='zone3age'><span id='zone3date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone3DamperCircle' class='circle' onclick="setValue('3')"><p class='damper'><span id='zone3Damper'>--</span>{$io->units("zone3Damper")}</p></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone4name">ZONE 4</p>
+          <div class='zone' id='zone4' onclick="clickZone('4')"><p id="zone4TempData"><span id='zone4lvtemp'>--</span>°{$io->units("zone4Temp")}</p><p id="zone4data">REG #<span id='zone4regime'>--</span></p><p id='zone4age'><span id='zone4date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone4DamperCircle' class='circle' onclick="setValue('4')"><p class='damper'><span id='zone4Damper'>--</span>{$io->units("zone4Damper")}</p></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone5name">ZONE 5</p>
+          <div class='zone' id='zone5' onclick="clickZone('5')"><p id="zone5TempData"><span id='zone5lvtemp'>--</span>°{$io->units("zone5Temp")}</p><p id="zone5data">REG #<span id='zone5regime'>--</span></p><p id='zone5age'><span id='zone5date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone5DamperCircle' class='circle' onclick="setValue('5')"><p class='damper'><span id='zone5Damper'>--</span>{$io->units("zone5Damper")}</p></div>
+        </div>
+			</div>
+      <div class='control'>
+				<div class='blower'></br>
+					<div class='blowerValues' onclick="setBlowerValue('2');">
+						Pressure: <span id='blower2pressure'>--</span> {$io->units("blower2pressure")}</br>
+						Speed: <span id='blower2Speed'>--</span> {$io->units("blower2Speed")}</br>
+						Control: <span id='blower2mode'>--</span></br>
+					</div>
+				  <div class='blowerImage' onclick="setBlowerValue('2');"><span id="blower2state" class="state"></span><div class="blowerText">BLOWER 2</div></div>
+				  <div class='pipe'></div>
+				</div>
+        <div class="zoneContainer">
+          <p id="zone6name">ZONE 6</p>
+          <div class='zone' id='zone6' onclick="clickZone('6')"><p id="zone6TempData"><span id='zone6lvtemp'>--</span>°{$io->units("zone6Temp")}</p><p id="zone6data">REG #<span id='zone6regime'>--</span></p><p id='zone6age'><span id='zone6date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone6DamperCircle' class='circle' onclick="setValue('6')"><p class='damper'><span id='zone6Damper'>--</span>{$io->units("zone6Damper")}</p></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone7name">ZONE 7</p>
+				  <div class='zone' id='zone7' onclick="clickZone('7')"><p id="zone7TempData"><span id='zone7lvtemp'>--</span>°{$io->units("zone7Temp")}</p><p id="zone7data">REG #<span id='zone7regime'>--</span></p><p id='zone7age'><span id='zone7date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone7DamperCircle' class='circle' onclick="setValue('7')"><p class='damper'><span id='zone7Damper'>--</span>{$io->units("zone7Damper")}</p></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone8name">ZONE 8</p>
+				  <div class='zone' id='zone8' onclick="clickZone('8')"><p id="zone8TempData"><span id='zone8lvtemp'>--</span>°{$io->units("zone8Temp")}</p><p id="zone8data">REG #<span id='zone8regime'>--</span></p><p id='zone8age'><span id='zone8date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone8DamperCircle' class='circle' onclick="setValue('8')"><p class='damper'><span id='zone8Damper'>--</span>{$io->units("zone8Damper")}</p></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone9name">ZONE 9</p>
+				  <div class='zone' id='zone9' onclick="clickZone('9')"><p id="zone9TempData"><span id='zone9lvtemp'>--</span>°{$io->units("zone9Temp")}</p><p id="zone9data">REG #<span id='zone9regime'>--</span></p><p id='zone9age'><span id='zone9date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone9DamperCircle' class='circle' onclick="setValue('9')"><p class='damper'><span id='zone9Damper'>--</span>{$io->units("zone9Damper")}</p></div>
+        </div>
+        <div class="zoneContainer">
+          <p id="zone10name">ZONE 10</p>
+          <div class='zone' id='zone10' onclick="clickZone('10')"><p id="zone10TempData"><span id='zone10lvtemp'>--</span>°{$io->units("zone10Temp")}</p><p id="zone10data">REG #<span id='zone10regime'>--</span></p><p id='zone10age'><span id='zone10date'></span> DAYS</p></div>
+				  <div class='zonepipe'></div>
+				  <div id='zone10DamperCircle' class='circle' onclick="setValue('10')"><p class='damper'><span id='zone10Damper'>--</span>{$io->units("zone10Damper")}</p></div>
+        </div>
+      </div>
+		<script>
+			var currentState = {};
+			/*
+			*  Function:
+			*      $(document).ready
+			*  Parameters:
+			*      function to execute when document is done loading
+			*  Return value:
+			*      none
+			*/
+			$(document).ready(function() {
+				//override this function to display the values correctly
+				currentPage.setIOFields = function (data){
+					$.each(data, function(key, val){
+						currentState[key] = val;
+						var e = $('#' + key);
+						if(e !== undefined){
+							if(key == key.match(/zone.control/) || key == key.match(/zone..control/)){
+								var zone = key.substring(0, 5);
+								if(key == key.match(/zone..control/))
+									zone = key.substring(0, 6);
+								if(val == 1){
+									$('#' + zone).css('background-color', 'green');
+									$('#' + zone + 'TempData').show();
+									$('#' + zone + 'data').show();
+									$('#' + zone + 'age').show();
+								}else{
+									$('#' + zone).css('background-color', 'grey');
+									$('#' + zone + 'TempData').hide();
+									$('#' + zone + 'data').hide();
+									$('#' + zone + 'age').hide();
+								}
+							}else if(key == key.match(/blower.fault/)){
+								var blower = $("#" + key.substring(0, 7) + "state");
+								if(val < 2){
+									blower.html("FAULT");
+									blower.css('color', 'red');
+								}else if(blower.html() == "FAULT")
+									blower.html("");
+							}else if(key == key.match(/blower.run/)){
+								var blower = $("#" + key.substring(0, 7) + "state");
+								if(blower.html() != "FAULT"){
+									if(val == 1){
+										blower.html("ON");
+										blower.css('color', 'green');
+									}else{
+										blower.html("OFF");
+										blower.css('color', 'black');
+									}
+								}
+							}else if(key == key.match(/blower.override/)){
+								var blower = key.substring(0, 7);
+								if(val == 1)
+									$('#' + blower + 'mode').html("Manual");
+								else
+									$('#' + blower + 'mode').html("Auto");
+							}else if(key == key.match(/zone.override/) || key == key.match(/zone..override/)){
+								var zone = key.substring(0, 5);
+								if(key == key.match(/zone..override/))
+									zone = key.substring(0, 6);
+								if (val == 1) {
+									$('#' + zone + 'DamperCircle').css( 'background-color', 'orange' );
+								} else {
+									$('#' + zone + 'DamperCircle').css( 'background-color', 'white' );
+								}
+							}else{
+								e.html(val);
+							}
+						}
+					});
+					getStartDates();
+				}
+				// update the IO fields using data from widget1State.json every 3 seconds
+				currentPage.refreshIOFields("state.json", 3, "content");
+
+			});
+		</script>
+  </div>
+	<div class="container">
+	  <div class="container-fliud footer">
+			<div class="logoContainer">
+				<a href="http://compostingtechnology.com" target="_blank"><div class="logoImage"></div></a>
+			</div>
+			<div class="productTitle">WebMACS</div>
+			<div class="productSubTitle">Modular Aeration</div>
+			<div class="productSubTitle">Control System</div>
+	  </div>
+	</div>
+		<div id="zone-control-form" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    <h3 id="zone-control-title">Zone</h3>
+			</div>
+			<div class="modal-body">
+				<div id="zoneOnline">
+					<label for="zoneoverride"  class="checkbox" onchange="refreshZoneValue();">
+						Manual Control
+						<input type="checkbox" id="zoneoverride" />
+					</label>
+					<br />
+					<div id="zone-value-div">
+						<label>Manual damper position:</label>
+						<div class="input-append">
+							<input style="width:40%; text-align: left;" id='zonevalue' type="number"/>
+							<span class="add-on">%</span>
+						</div>
+					</div>
+					<br /><br />
+					<a href="#" class="btn btn-default pull-right" onclick="viewSelectedZoneGraph();">View Graph</a>
+				</div>
+				<div id="zoneOffline">
+					Click <b>Start Batch</b> to turn on aeration control and temperature logging for this zone.
+				</div>
+
+				<input type="hidden" id="selected-zone" name="selected-zone">
+			</div>
+			<div class="modal-footer">
+				<a href="#" id="zonecontrolon" class="btn btn-success pull-left" onclick="startSelectedZone();">Start Batch</a>
+				<a href="#" id="zonecontroloff" class="btn btn-danger pull-left" onclick="stopSelectedZone();">Stop Batch</a>
+		    <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+				<a href="#" id="savezonechanges" class="btn btn-primary" onclick="saveSelectedZone();">Apply changes</a>
+		  </div>
+		</div>
+		<div id="blower-form" class="modal hide fade">
+			<div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    <h3 id="blower-form-title">Blower</h3>
+		  </div>
+			<div class="modal-body">
+				<label class="checkbox">
+					<input type="checkbox" id="bloweroverride" onchange="refreshBlowerValue();"> Manual Control
+				</label>
+				<br />
+				<div id="blower-value-div">
+					<label for="blowervalue">Manual VFD speed:</label>
+					<div class="input-append">
+						<input style="width:40%; text-align: left;" id='blowervalue' type="number"/>
+						<span class="add-on">%</span>
+					</div>
+				</div>
+				<br /><br />
+
+				<input type="hidden" id="selected-blower" name="selected-blower">
+		  </div>
+		  <div class="modal-footer">
+				<a href="#" id="blower-start-button" class="btn btn-success pull-left" onclick="startSelectedBlower();">Blower On</a>
+				<a href="#" id="blower-stop-button" class="btn btn-danger pull-left" onclick="stopSelectedBlower();">Blower Off</a>
+		    <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+		    <a href="#" class="btn btn-primary" onclick="saveSelectedBlower();">Apply changes</a>
+		  </div>
+		</div>
+	</body>
+</html>
+{else}
+<html>
+<head>
+	<title>Access denied</title>
+</head>
+<body>
+	<p>Access denied</p>
+	<script>window.location.href = "loginScreen.html";</script>
+</body>
+</html>
+{/if}

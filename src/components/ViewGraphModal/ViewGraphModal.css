@@ -1,0 +1,28 @@
+@import '../../../node_modules/react-vis/dist/style.css';
+
+.ViewGraphModal {
+    left: 5%;
+    width: 90%;
+    top: 5% !important;
+    margin: 0;
+}
+
+.ModalButtons button {
+    margin-left: 10px;
+    bottom: 10px !important;
+}
+
+.graphPDF {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#graphToSave {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.graph-modal-note {
+    padding-top: 4px;
+}

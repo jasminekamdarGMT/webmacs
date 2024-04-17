@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+{if $user->hasAccess(255)}
+{$sqlite->setAccess(3)}
+{$io->load()}
+{$reg->load()}
+{$evnt->load()}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WebMACS Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/bootstrap.min.css" rel="stylesheet">
+    <link href="/webmacs.css" rel="stylesheet">
+    <link href="/bootstrap-responsive.min.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        {$sqlite->open("/usb/settings.db")}
+        {$sqlite->exec("SELECT * FROM settings WHERE name='FacilityName';")}
+        {for $i=0 to ($sqlite->rowsCount-1)}
+          <a class="brand" href="/index.html">{$sqlite->rows[$i]['value']}</a>
+        {/for}
+        {$sqlite->close()}
+        <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+			<li><a href="/index.html">Map</a></li>
+            <li><a href="/status.html">Status</a></li>
+            <li class="active"><a href="#">Settings</a></li>
+            <li><a href="/logs.html">Logs</a></li>
+            <!--li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+                </ul>
+            </li-->
+            </ul>
+        </div><!--/.nav-collapse -->
+        </div>
+    </div>
+    </div>
+
+    <div class='container'>
+		<div class="settingsContainer">
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#blowerSettingsTab" data-toggle="tab">Blower Control</a></li>
+					<li><a href="#damperSettingsTab" data-toggle="tab">Damper Control</a></li>
+					<li><a href="#otherSettingsTab" data-toggle="tab">Other</a></li>
+				</ul>
+				<div class="tab-content">
+				    <div class="tab-pane active" id="blowerSettingsTab">
+						<fieldset>
+							<legend>Blower Settings</legend>
+						    <label for="Blower45TempSetPoint">Blower 14/15 - Compost Temp Set Point</label>
+							<div class="input-append">
+					      	    <input id='Blower45TempSetPoint' type='number' />
+								<span class="add-on">{$io->units("duct45temp")}</span>
+							</div>
+							<label for="Blower16TempSetPoint">Blower 16 - Compost Temp Set Point</label>
+							<div class="input-append">
+					        	<input id='Blower16TempSetPoint' type='number' />
+								<span class="add-on">{$io->units("duct45temp")}</span>
+                            </div>
+                            <label for="Blower78TempSetPoint">Blower 17/18 - Compost Temp Set Point</label>
+							<div class="input-append">
+					        	<input id='Blower78TempSetPoint' type='number' />
+								<span class="add-on">{$io->units("duct45temp")}</span>
+                            </div>
+                            <label for="Blower90TempSetPoint">Blower 19/20 - Compost Temp Set Point</label>
+							<div class="input-append">
+					        	<input id='Blower90TempSetPoint' type='number' />
+								<span class="add-on">{$io->units("duct45temp")}</span>
+                            </div>
+                            <label for="Blower12TempSetPoint">Blower 21/22 - Compost Temp Set Point</label>
+							<div class="input-append">
+					        	<input id='Blower12TempSetPoint' type='number' />
+								<span class="add-on">{$io->units("duct45temp")}</span>
+                            </div>
+                            <label for="Blower34TempSetPoint">Blower 23/24 - Compost Temp Set Point</label>
+							<div class="input-append">
+					        	<input id='Blower34TempSetPoint' type='number' />
+								<span class="add-on">{$io->units("duct45temp")}</span>
+                            </div>
+                            <label for="Blower56TempSetPoint">Blower 25/26 - Compost Temp Set Point</label>
+							<div class="input-append">
+					        	<input id='Blower56TempSetPoint' type='number' />
+								<span class="add-on">{$io->units("duct45temp")}</span>
+							</div>
+						    <label for="MinVFDSpeed">Min VFD Speed</label>
+							<div class="input-append">
+					      		<input id='MinVFDSpeed' type='number' />
+								<span class="add-on">%</span>
+							</div>
+							<label for="BlowerCycleTotalTime">Blower Cycle Time</label>
+							<div class="input-append">
+					      		<input id='BlowerCycleTotalTime' type='number' />
+								<span class="add-on">Minutes</span>
+							</div>
+							<label for="BlowerCycleOffTime">Blower Off Time (each cycle)</label>
+							<div class="input-append">
+					      		<input id='BlowerCycleOffTime' type='number' />
+								<span class="add-on">Minutes</span>
+							</div>
+							</fieldset>
+
+							<fieldset id='advancedB' hidden>
+							<legend>Blower PID Settings</legend>
+							<label>Gain</label><input id='BlowerGain' type='number' /></br>
+							<label>Integral</label><input id='BlowerIntegral' type='number' /></br>
+                            <label>Derivative</label><input id='BlowerDerivative' type='number' /></br>
+                            <label>Rate</label>
+                            <div class="input-append">
+                                <input id='BlowerRate' type='number' />
+                                <span class="add-on">Seconds</span>
+                            </div>
+							</fieldset>
+							<br />
+							<button class="btn" id='showB' onclick='$("#advancedB").show(); $("#hideB").show(); $("#showB").hide();'><i class="icon-chevron-down"></i> Show PID Settings</button>
+							<button class="btn" id='hideB' onclick='$("#advancedB").hide(); $("#showB").show(); $("#hideB").hide();' style="display: none;"><i class="icon-chevron-up"></i> Hide PID Settings</button>
+							<button class='btn btn-primary' onclick='saveBlowerSettings();'>Save Blower Settings</button>
+				    </div>
+						<div class="tab-pane" id="damperSettingsTab">
+							<fieldset>
+                                <legend>Damper Settings</legend>
+                                <label>Duct Temperature Setpoint</label>
+								<div class="input-append">
+									<input id='DamperTempSetPoint' type='number' />
+									<span class="add-on">{$io->units("duct45temp")}</span>
+								</div>
+								<label>Minimum Damper Value</label>
+								<div class="input-append">
+									<input id='MinDamperValue' type='number' />
+									<span class="add-on">%</span>
+								</div>
+							</fieldset>
+							<fieldset id='advanced' hidden>
+								<legend>Damper PID Settings</legend>
+								<label>Gain</label><input id='DamperGain' type='number' /></br>
+								<label>Integral</label><input id='DamperIntegral' type='number' /></br>
+								<label>Derivative</label><input id='DamperDerivative' type='number' /></br>
+								<label>Rate</label>
+								<div class="input-append">
+									<input id='DamperRate' type='number' />
+									<span class="add-on">Seconds</span>
+								</div>
+							</fieldset>
+							<br />
+							<button class='btn' id='show' onclick='$("#advanced").show(); $("#hide").show(); $("#show").hide();'><i class="icon-chevron-down"></i> Show PID Settings</button>
+							<button class='btn' id='hide' onclick='$("#advanced").hide(); $("#show").show(); $("#hide").hide();' style="display: none;"><i class="icon-chevron-up"></i> Hide PID Settings</button>
+							<button class='btn btn-primary' onclick='saveDamperSettings();'>Save Damper Settings</button>
+						</div>
+						<div class="tab-pane" id="otherSettingsTab">
+							<fieldset>
+								<legend>Other Settings</legend>
+								<label>Username *</label><input id='Username' type='text' value="{$user->name()}" disabled /></br>
+								<label>Facility Name *</label><input id='FacilityName' type='text' {if $user->hasAccess(1)}{else}disabled{/if} /></br>
+								<label>Email/SMS Address *</label><input id='Email' type='text' value="{$user->email()}" disabled /></br>
+                                <label>Temperature Units *</label><input id='Temperature' type='text' value="°{$io->units('zone14temp')}" disabled /></br>
+                                <label>High Temperature Alarm</label>
+								<div class="input-append">
+									<input id='MaxTemperatureAlarm' type='number' />
+									<span class="add-on">°{$io->units("zone14temp")}</span>
+								</div>
+								<label>Low Temperature Alarm</label>
+								<div class="input-append">
+									<input id='MinTemperatureAlarm' type='number' />
+									<span class="add-on">°{$io->units("zone14temp")}</span>
+								</div>
+								<label>Data Logging Rate</label>
+								<div class="input-append">
+									<input id='DataLoggingRate' type='number' />
+									<span class="add-on">Minutes</span>
+								</div>
+							</fieldset>
+							<p><i>* These settings can only be changed by a system administrator.</i></p>
+							<br />
+							<button class="btn btn-primary" id='save' onclick='saveUserSettings();' style='bottom: 10px;'>Save Other Settings</button>
+							<hr />
+							<fieldset>
+								<legend>System Tools</legend>
+								<a class="btn btn-default" id='save' href='/inputs.html' style='bottom: 10px;'>Monitor Inputs</a>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="container-fliud footer">
+				<hr>
+				<div class="productTitles">
+					<div class="productTitle">WebMACS</div>
+					<div class="productSubTitle">Modular Aeration</div>
+					<div class="productSubTitle">Control System</div>
+				</div>
+				<div class="logoContainer">
+					<a href="http://compostingtechnology.com" target="_blank"><div class="logoImage"></div></a>
+				</div>
+			</div>
+        </div>
+        
+        <script src="/javascript/jquery-1.11.1.min.js"></script>
+        <script src="/bootstrap.min.js"></script>
+        <script src="/javascript/x600m.js"></script>
+        <script src="/webmacs.js"></script>
+        <script>
+            getSettings();
+        </script>
+    </body>
+</html>
+{else}
+<html>
+<head>
+	<title>Access denied</title>
+</head>
+<body>
+	<p>Access denied</p>
+	<script>window.location.href = "loginScreen.html";</script>
+</body>
+</html>
+{/if}

@@ -1,0 +1,19 @@
+[
+  {"id":"1","name":"DataLoggingRate","value":"120"},
+  {"id":"2","name":"FacilityName","value":"DEMO UNIT"},
+  {"id":"4","name":"BlowerGain","value":"1"},
+  {"id":"5","name":"BlowerIntegral","value":"1"},
+  {"id":"6","name":"BlowerDerivative","value":"0.3"},
+  {"id":"7","name":"BlowerRate","value":"2"},
+  {"id":"8","name":"BlowerCycleOnTime","value":"55"},
+  {"id":"9","name":"BlowerCycleOffTime","value":"5"},
+  {"id":"10","name":"Regime1TempSetPoint","value":"131"},
+  {"id":"11","name":"Regime2TempSetPoint","value":"144"},
+  {"id":"12","name":"Regime3TempSetPoint","value":"134"},
+  {"id":"13","name":"Regime1Duration","value":"5"},
+  {"id":"14","name":"Regime2Duration","value":"7"},
+  {"id":"20","name":"MaxTemperatureAlarm","value":"80"},
+  {"id":"21","name":"MinTemperatureAlarm","value":"0"},
+  {"id":"22","name":"Zone01ProbeAPointID","value":"0000000040B04AE3_1"},
+  {"id":"23","name":"Zone01ProbeBPointID","value":"0000000040B04AE3_2"}
+]

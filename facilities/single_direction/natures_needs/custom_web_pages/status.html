@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+{if $user->hasAccess(255)}
+{$sqlite->setAccess(3)}
+{$io->load()}
+{$reg->load()}
+{$evnt->load()}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WebMACS Status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/bootstrap.min.css" rel="stylesheet">
+    <link href="/webmacs.css" rel="stylesheet">
+    <link href="/bootstrap-responsive.min.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        {$sqlite->open("/usb/settings.db")}
+        {$sqlite->exec("SELECT * FROM settings WHERE name='FacilityName';")}
+        {for $i=0 to ($sqlite->rowsCount-1)}
+          <a class="brand" href="/index.html">{$sqlite->rows[$i]['value']}</a>
+        {/for}
+        {$sqlite->close()}
+        <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+            <li><a href="/index.html">Map</a></li>
+            <li class="active"><a href="#">Status</a></li>
+            <li><a href="/settings.html">Settings</a></li>
+            <li><a href="/logs.html">Logs</a></li>
+            <!--li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+                </ul>
+            </li-->
+            </ul>
+        </div><!--/.nav-collapse -->
+        </div>
+    </div>
+    </div>
+
+    <div id="content" class="container">
+        <div class="row">
+            <div class="span4">
+                <div class="well">
+                    <div class="pull-right">
+                        <span id="blower45mode" class="label">MODE</span>
+                        <span id="blower45status" class="label">STATUS</span>
+                        <span id="blower45fault" class="label label-warning">FAULT</span>
+                    </div>
+                    <h3>Blower 14/15</h3>
+                    <a id="btn-blower45control" class="btn" onclick="setBlowerValue('45', '14/15');">Control</a><br>
+                    <div class="temp-display">Duct Temp: <b id="duct45lvtemp"></b> <b>°{$io->units("zone14temp")}</b></div>
+                    <div class="temp-display">VFD Speed: <b id="blower45speed"></b> <b>{$io->units("blower45speed")}</b></div>
+                </div>
+            </div>
+
+            <div class="span4">
+                <div id="zone14container" class="well">
+                    <h3>Zone 14</h3>
+                    <a id="btn-zone14control" class="btn" onclick="setZoneValue('14');">Control</a><br>
+                    <div id="zone14status">
+                        <div class="temp-display">Compost Temp: <b id="zone14lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone14age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div id="zone15container" class="well">
+                    <h3>Zone 15</h3>
+                    <a id="btn-zone15control" class="btn" onclick="setZoneValue('15');">Control</a><br>
+                    <div id="zone15status">
+                        <div class="temp-display">Compost Temp: <b id="zone15lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone15age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <div class="well">
+                    <div class="pull-right">
+                        <span id="blower16mode" class="label">MODE</span>
+                        <span id="blower16status" class="label">STATUS</span>
+                        <span id="blower16fault" class="label label-warning">FAULT</span>
+                    </div>
+                    <h3>Blower 16</h3>
+                    <a id="btn-blower16control" class="btn" onclick="setBlowerValue('16', '16');">Control</a><br>
+                    <div class="temp-display">Duct Temp: <b id="duct16lvtemp"></b> <b>°{$io->units("zone16temp")}</b></div>
+                    <div class="temp-display">VFD Speed: <b id="blower16speed"></b> <b>{$io->units("blower45speed")}</b></div>
+                </div>
+            </div>
+
+            <div class="span8">
+                <div id="zone16container" class="well">
+                    <h3>Zone 16</h3>
+                    <a id="btn-zone16control" class="btn" onclick="setZoneValue('16');">Control</a><br>
+                    <div id="zone16status">
+                        <div class="temp-display">Compost Temp: <b id="zone16lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone16age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <div class="well">
+                    <div class="pull-right">
+                        <span id="blower78mode" class="label">MODE</span>
+                        <span id="blower78status" class="label">STATUS</span>
+                        <span id="blower78fault" class="label label-warning">FAULT</span>
+                    </div>
+                    <h3>Blower 17/18</h3>
+                    <a id="btn-blower78control" class="btn" onclick="setBlowerValue('78', '17/18');">Control</a><br>
+                    <div class="temp-display">Duct Temp: <b id="duct78lvtemp"></b> <b>°{$io->units("zone14temp")}</b></div>
+                    <div class="temp-display">VFD Speed: <b id="blower78speed"></b> <b>{$io->units("blower45speed")}</b></div>
+                </div>
+            </div>
+
+            <div class="span4">
+                <div id="zone17container" class="well">
+                    <h3>Zone 17</h3>
+                    <a id="btn-zone17control" class="btn" onclick="setZoneValue('17');">Control</a><br>
+                    <div id="zone17status">
+                        <div class="temp-display">Compost Temp: <b id="zone17lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone17age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div id="zone18container" class="well">
+                    <h3>Zone 18</h3>
+                    <a id="btn-zone18control" class="btn" onclick="setZoneValue('18');">Control</a><br>
+                    <div id="zone18status">
+                        <div class="temp-display">Compost Temp: <b id="zone18lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone18age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <div class="well">
+                    <div class="pull-right">
+                        <span id="blower90mode" class="label">MODE</span>
+                        <span id="blower90status" class="label">STATUS</span>
+                        <span id="blower90fault" class="label label-warning">FAULT</span>
+                    </div>
+                    <h3>Blower 19/20</h3>
+                    <a id="btn-blower90control" class="btn" onclick="setBlowerValue('90', '19/20');">Control</a><br>
+                    <div class="temp-display">Duct Temp: <b id="duct90lvtemp"></b> <b>°{$io->units("zone14temp")}</b></div>
+                    <div class="temp-display">VFD Speed: <b id="blower90speed"></b> <b>{$io->units("blower45speed")}</b></div>
+                </div>
+            </div>
+
+            <div class="span4">
+                <div id="zone19container" class="well">
+                    <h3>Zone 19</h3>
+                    <a id="btn-zone19control" class="btn" onclick="setZoneValue('19');">Control</a><br>
+                    <div id="zone19status">
+                        <div class="temp-display">Compost Temp: <b id="zone19lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone19age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div id="zone20container" class="well">
+                    <h3>Zone 20</h3>
+                    <a id="btn-zone20control" class="btn" onclick="setZoneValue('20');">Control</a><br>
+                    <div id="zone20status">
+                        <div class="temp-display">Compost Temp: <b id="zone20lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone20age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <div class="well">
+                    <div class="pull-right">
+                        <span id="blower12mode" class="label">MODE</span>
+                        <span id="blower12status" class="label">STATUS</span>
+                        <span id="blower12fault" class="label label-warning">FAULT</span>
+                    </div>
+                    <h3>Blower 21/22</h3>
+                    <a id="btn-blower12control" class="btn" onclick="setBlowerValue('12', '21/22');">Control</a><br>
+                    <div class="temp-display">Duct Temp: <b id="duct12lvtemp"></b> <b>°{$io->units("zone14temp")}</b></div>
+                    <div class="temp-display">VFD Speed: <b id="blower12speed"></b> <b>{$io->units("blower45speed")}</b></div>
+                </div>
+            </div>
+
+            <div class="span4">
+                <div id="zone21container" class="well">
+                    <h3>Zone 21</h3>
+                    <a id="btn-zone21control" class="btn" onclick="setZoneValue('21');">Control</a><br>
+                    <div id="zone21status">
+                        <div class="temp-display">Compost Temp: <b id="zone21lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone21age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div id="zone22container" class="well">
+                    <h3>Zone 22</h3>
+                    <a id="btn-zone22control" class="btn" onclick="setZoneValue('22');">Control</a><br>
+                    <div id="zone22status">
+                        <div class="temp-display">Compost Temp: <b id="zone22lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone22age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <div class="well">
+                    <div class="pull-right">
+                        <span id="blower34mode" class="label">MODE</span>
+                        <span id="blower34status" class="label">STATUS</span>
+                        <span id="blower34fault" class="label label-warning">FAULT</span>
+                    </div>
+                    <h3>Blower 23/24</h3>
+                    <a id="btn-blower34control" class="btn" onclick="setBlowerValue('34', '23/24');">Control</a><br>
+                    <div class="temp-display">Duct Temp: <b id="duct34lvtemp"></b> <b>°{$io->units("zone14temp")}</b></div>
+                    <div class="temp-display">VFD Speed: <b id="blower34speed"></b> <b>{$io->units("blower45speed")}</b></div>
+                </div>
+            </div>
+
+            <div class="span4">
+                <div id="zone23container" class="well">
+                    <h3>Zone 23</h3>
+                    <a id="btn-zone23control" class="btn" onclick="setZoneValue('23');">Control</a><br>
+                    <div id="zone23status">
+                        <div class="temp-display">Compost Temp: <b id="zone23lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone23age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div id="zone24container" class="well">
+                    <h3>Zone 24</h3>
+                    <a id="btn-zone24control" class="btn" onclick="setZoneValue('24');">Control</a><br>
+                    <div id="zone24status">
+                        <div class="temp-display">Compost Temp: <b id="zone24lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone24age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <div class="well">
+                    <div class="pull-right">
+                        <span id="blower56mode" class="label">MODE</span>
+                        <span id="blower56status" class="label">STATUS</span>
+                        <span id="blower56fault" class="label label-warning">FAULT</span>
+                    </div>
+                    <h3>Blower 25/26</h3>
+                    <a id="btn-blower56control" class="btn" onclick="setBlowerValue('56', '25/26');">Control</a><br>
+                    <div class="temp-display">Duct Temp: <b id="duct56lvtemp"></b> <b>°{$io->units("zone14temp")}</b></div>
+                    <div class="temp-display">VFD Speed: <b id="blower56speed"></b> <b>{$io->units("blower45speed")}</b></div>
+                </div>
+            </div>
+
+            <div class="span4">
+                <div id="zone25container" class="well">
+                    <h3>Zone 25</h3>
+                    <a id="btn-zone25control" class="btn" onclick="setZoneValue('25');">Control</a><br>
+                    <div id="zone25status">
+                        <div class="temp-display">Compost Temp: <b id="zone25lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone25age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div id="zone26container" class="well">
+                    <h3>Zone 26</h3>
+                    <a id="btn-zone26control" class="btn" onclick="setZoneValue('26');">Control</a><br>
+                    <div id="zone26status">
+                        <div class="temp-display">Compost Temp: <b id="zone26lvtemp"></b> </b>°{$io->units("zone14Temp")}</b></div>
+                        <div class="temp-display">Batch Age: <b id="zone26age"></b> Days</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fliud footer">
+            <hr>
+            <div class="productTitles">
+                <div class="productTitle">WebMACS</div>
+                <div class="productSubTitle">Modular Aeration</div>
+                <div class="productSubTitle">Control System</div>
+            </div>
+            <div class="logoContainer">
+                <a href="http://compostingtechnology.com" target="_blank"><div class="logoImage"></div></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="blower-form" class="modal hide fade">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 id="blower-form-title">Blower</h3>
+        </div>
+        <div class="modal-body">
+            <label class="checkbox">
+                <input type="checkbox" id="bloweroverride" onchange="refreshBlowerValue();"> Manual Control
+            </label>
+            <br />
+            <div id="blower-value-div">
+                <label for="blowervalue">Manual VFD speed:</label>
+                <div class="input-append">
+                    <input style="width:40%; text-align: left;" id='blowervalue' type="number"/>
+                    <span class="add-on">%</span>
+                </div>
+                <label>Manual VFD status:</label>
+                <label for="blowercontrolon" class="radio inline">
+                    <input type="radio" name="blowercontrol" id="blowercontrolon" value="1"> On
+                </label>
+                <label for="blowercontroloff" class="radio inline">
+                    <input type="radio" name="blowercontrol" id="blowercontroloff" value="0"> Off
+                </label>
+            </div>
+            <br /><br />
+
+            <input type="hidden" id="selected-blower" name="selected-blower">
+        </div>
+        <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+        <a href="#" class="btn btn-primary" onclick="saveSelectedBlower();">Apply changes</a>
+        </div>
+    </div>
+
+    <div id="zone-control-form" class="modal hide fade">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    <h3 id="zone-control-title">Zone</h3>
+		</div>
+		<div class="modal-body">
+			<div id="zoneOnline">
+                Click <b>Stop Batch</b> to turn off aeration control and temperature logging for this zone.
+                <br/><br/>
+				<a href="#" class="btn btn-default pull-right" onclick="viewSelectedZoneGraph();">View Graph</a>
+			</div>
+			<div id="zoneOffline">
+                Click <b id="zonestartlabel">Resume Batch</b> to turn on aeration control and temperature logging for this zone.
+                <br/><br/>
+                <label class="checkbox">
+                    <input type="checkbox" id="zonereset" onclick="refreshZoneValue();"> Reset temperature records
+                </label>
+			</div>
+
+			<input type="hidden" id="selected-zone" name="selected-zone">
+		</div>
+		<div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <a href="#" id="zonecontrolon" class="btn btn-success" onclick="startSelectedZone();">Resume Batch</a>
+            <a href="#" id="zonecontroloff" class="btn btn-danger" onclick="stopSelectedZone();">Stop Batch</a>
+		</div>
+	</div>
+    
+    <script src="/javascript/jquery-1.11.1.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+    <script src="/javascript/x600m.js"></script>
+    <script src="/webmacs.js"></script>
+
+    <script>
+			var currentState = {};
+
+			$(document).ready(function() {
+				//overrides display function in x600m.js
+				currentPage.setIOFields = function (data){
+					$.each(data, function(key, val){
+						currentState[key] = val;
+						var e = $('#' + key);
+						if(e !== undefined){
+							if(key == key.match(/blower..run/)){
+								var blower = key.substring(0, 8);
+								if(val == 1){
+                                    $('#btn-' + blower + 'control').removeClass('btn-danger');
+                                    $('#btn-' + blower + 'control').addClass('btn-success');
+                                    $('#btn-' + blower + 'control').html('Running');
+								}else{
+                                    $('#btn-' + blower + 'control').removeClass('btn-success');
+									$('#btn-' + blower + 'control').addClass('btn-danger');
+                                    $('#btn-' + blower + 'control').html('Stopped');
+                                }
+                            }else if(key == key.match(/blower..override/)){
+								var blower = key.substring(0, 8);
+								if(val == 1){
+                                    $('#' + blower + 'mode').removeClass('label-success');
+                                    $('#' + blower + 'mode').addClass('label-warning');
+                                    $('#' + blower + 'mode').html('MANUAL');
+								}else{
+                                    $('#' + blower + 'mode').removeClass('label-warning');
+                                    $('#' + blower + 'mode').addClass('label-success');
+                                    $('#' + blower + 'mode').html('AUTO');
+                                }
+                            }else if(key == key.match(/blower..control/)){
+                                var blower = key.substring(0, 8);
+                                if (val == 1){
+                                    $('#' + blower + 'status').removeClass('label-warning');
+                                    $('#' + blower + 'status').addClass('label-success');
+                                    $('#' + blower + 'status').html('ON');
+                                }else{
+                                    $('#' + blower + 'status').removeClass('label-success');
+                                    $('#' + blower + 'status').addClass('label-warning');
+                                    $('#' + blower + 'status').html('OFF');
+                                }
+                            }else if(key == key.match(/blower..fault/)){
+								var blower = key.substring(0, 8);
+								if(val == 0){
+                                    $('#' + blower + 'fault').show();
+                                } else {
+                                    $('#' + blower + 'fault').hide();
+                                }
+                            }else if(key == key.match(/zone..control/)){
+                                var zone = key.substring(0, 6);
+                                if(val == 1){
+                                    $('#' + zone + 'container').removeClass('inactive-zone');
+                                    $('#' + zone + 'container').addClass('active-zone');
+                                    $('#btn-' + zone + 'control').removeClass('btn-inverse');
+                                    $('#btn-' + zone + 'control').addClass('btn-primary');
+                                    $('#btn-' + zone + 'control').html('Online');
+                                    $('#' + zone + 'status').show();
+								}else{
+                                    $('#' + zone + 'container').removeClass('active-zone');
+                                    $('#' + zone + 'container').addClass('inactive-zone');
+                                    $('#btn-' + zone + 'control').removeClass('btn-primary');
+									$('#btn-' + zone + 'control').addClass('btn-inverse');
+                                    $('#btn-' + zone + 'control').html('Offline');
+                                    $('#' + zone + 'status').hide();
+                                }
+							}else{
+								e.html(val);
+							}
+						}
+					});
+					getStartDates();
+                }
+				// update the IO fields using data from state.json every 3 seconds
+				currentPage.refreshIOFields("state.json", 3, "content");
+
+			});
+		</script>
+  </body>
+</html>
+{else}
+<html>
+<head>
+	<title>Access denied</title>
+</head>
+<body>
+	<p>Access denied</p>
+	<script>window.location.href = "loginScreen.html";</script>
+</body>
+</html>
+{/if}

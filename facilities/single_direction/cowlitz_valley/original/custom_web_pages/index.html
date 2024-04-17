@@ -1,0 +1,249 @@
+{if $user->hasAccess(255)}
+{$sqlite->setAccess(3)}
+{$io->load()}
+{$reg->load()}
+{$evnt->load()}
+<html>
+	<head>
+		<title>Compost Monitoring</title>
+		<script src="/javascript/jquery-1.11.1.min.js"></script>
+		<script src="/jquery-ui.js"></script>
+		<script src="/javascript/x600m.js"></script>
+		<script src="/compost.js"></script>
+		<link rel="stylesheet" type="text/css" href="compost.css" />
+	</head>
+	<body>
+	<div class='main'>
+			{$sqlite->open("/usb/settings.db")}
+			{$sqlite->exec("SELECT * FROM settings WHERE name='FacilityName';")}
+			{for $i=0 to ($sqlite->rowsCount-1)}
+				<h1 class='title'>{$sqlite->rows[$i]['value']}</h1>
+			{/for}
+			{$sqlite->close()}
+		<div id="content">
+			<div class='buttons'>
+				<div class="buttonset">
+					<button id="zone1controlon" onclick="io.set('zone1control', 1, callback);">Start Batch</button></br>
+					<button id="zone1controloff" onclick="io.set('zone1control', 0, callback);">Stop Batch</button></br>
+					<label for="zone1override"  class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone1override" onclick="overrideZone('zone1');"/>
+				</div>
+				
+				<div class="buttonset">
+					<button id="zone2controlon" onclick="io.set('zone2control', 1, callback);">Start Batch</button></br>
+					<button id="zone2controloff" onclick="io.set('zone2control', 0, callback);">Stop Batch</button></br>
+					<label for="zone2override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone2override" onclick="overrideZone('zone2');"/>
+				</div>
+				
+				<div class="buttonset">
+					<button id="zone3controlon" onclick="io.set('zone3control', 1, callback);">Start Batch</button></br>
+					<button id="zone3controloff" onclick="io.set('zone3control', 0, callback);">Stop Batch</button></br>
+					<label for="zone3override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone3override" onclick="overrideZone('zone3');"/>
+				</div>
+				
+				<div class="buttonset">
+					<button id="zone4controlon" onclick="io.set('zone4control', 1, callback);">Start Batch</button></br>
+					<button id="zone4controloff" onclick="io.set('zone4control', 0, callback);">Stop Batch</button></br>
+					<label for="zone4override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone4override" onclick="overrideZone('zone4');"/>
+				</div>
+				
+				<div class="buttonset">
+					<button id="zone5controlon" onclick="io.set('zone5control', 1, callback);">Start Batch</button></br>
+					<button id="zone5controloff" onclick="io.set('zone5control', 0, callback);">Stop Batch</button></br>
+					<label for="zone5override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone5override" onclick="overrideZone('zone5');"/>
+				</div>
+			</div>
+			<div class='control'>
+				<div class='blowerImage'><span id="blower1state" class="state"></span><div class="blowerText">Blower 1</div></div>
+				<div class='blower'></br>
+					Pressure: <span id='blower1pressure'>--</span> {$io->units("blower1pressure")}</br>
+					Speed: <span id='blower1Speed' onclick="setBlowerValue('blower1');">--</span> {$io->units("blower1Speed")}</br>
+					<label for="blower1override" style="width: auto; position:relative; font-size:14px;">Manual Ctrl:</label><input style="position: relative;" type="checkbox" id="blower1override" onclick="overrideBlower('blower1');"/>
+				</div>
+				<div class='zone' id='zone1' ondblclick="dblClickZone('zone1');"><p id="zone1name">Zone 1</p><p id="zone1TempData">Zone 1: <span id='zone1Temp'>--</span>°{$io->units("zone1Temp")}</p><p id="zone1data">Regime: <span id='zone1regime'>--</span></br>Start: <span id='zone1date'></span></div>
+				<div class='zone' id='zone2' ondblclick="dblClickZone('zone2');"><p id="zone2name">Zone 2</p><p id="zone2TempData">Zone 2: <span id='zone2Temp'>--</span>°{$io->units("zone2Temp")}</p><p id="zone2data">Regime: <span id='zone2regime'>--</span></br>Start: <span id='zone2date'></span></div>
+				<div class='zone' id='zone3' ondblclick="dblClickZone('zone3');"><p id="zone3name">Zone 3</p><p id="zone3TempData">Zone 3: <span id='zone3Temp'>--</span>°{$io->units("zone3Temp")}</p><p id="zone3data">Regime: <span id='zone3regime'>--</span></br>Start: <span id='zone3date'></span></div>
+				<div class='zone' id='zone4' ondblclick="dblClickZone('zone4');"><p id="zone4name">Zone 4</p><p id="zone4TempData">Zone 4: <span id='zone4Temp'>--</span>°{$io->units("zone4Temp")}</p><p id="zone4data">Regime: <span id='zone4regime'>--</span></br>Start: <span id='zone4date'></span></div>
+				<div class='zone' id='zone5' ondblclick="dblClickZone('zone5');"><p id="zone5name">Zone 5</p><p id="zone5TempData">Zone 5: <span id='zone5Temp'>--</span>°{$io->units("zone5Temp")}</p><p id="zone5data">Regime: <span id='zone5regime'>--</span></br>Start: <span id='zone5date'></span></p></div>
+				<div class='pipe'></div>
+				<div class='zonepipe' style='top: 150px'></div>
+				<div class='zonepipe' style='top: 264px'></div>
+				<div class='zonepipe' style='top: 378px'></div>
+				<div class='zonepipe' style='top: 492px'></div>
+				<div class='zonepipe' style='top: 606px'></div>
+				<div class='circle' style='top: 135px;'><p class='damper'><span id='zone1Damper' onclick="setValue('zone1')">--</span>{$io->units("zone1Damper")}</p></div>
+				<div class='circle' style='top: 249px;'><p class='damper'><span id='zone2Damper' onclick="setValue('zone2')">--</span>{$io->units("zone2Damper")}</p></div>
+				<div class='circle' style='top: 363px;'><p class='damper'><span id='zone3Damper' onclick="setValue('zone3')">--</span>{$io->units("zone3Damper")}</p></div>
+				<div class='circle' style='top: 477px;'><p class='damper'><span id='zone4Damper' onclick="setValue('zone4')">--</span>{$io->units("zone4Damper")}</p></div>
+				<div class='circle' style='top: 591px;'><p class='damper'><span id='zone5Damper' onclick="setValue('zone5')">--</span>{$io->units("zone5Damper")}</p></div>
+			</div>
+			<div class='buttons'>
+				<div class="buttonset">
+					<button id="zone6controlon" onclick="io.set('zone6control', 1, callback);">Start Batch</button></br>
+					<button id="zone6controloff" onclick="io.set('zone6control', 0, callback);">Stop Batch</button></br>
+					<label for="zone6override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone6override" onclick="overrideZone('zone6');"/>
+				</div>
+				
+				<div class="buttonset">
+					<button id="zone7controlon" onclick="io.set('zone7control', 1, callback);">Start Batch</button></br>
+					<button id="zone7controloff" onclick="io.set('zone7control', 0, callback);">Stop Batch</button></br>
+					<label for="zone7override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone7override" onclick="overrideZone('zone7');"/>
+				</div>
+				
+				<div class="buttonset">
+					<button id="zone8controlon" onclick="io.set('zone8control', 1, callback);">Start Batch</button></br>
+					<button id="zone8controloff" onclick="io.set('zone8control', 0, callback);">Stop Batch</button></br>
+					<label for="zone8override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone8override" onclick="overrideZone('zone8');"/>
+				</div>
+				
+				<div class="buttonset">
+					<button id="zone9controlon" onclick="io.set('zone9control', 1, callback);">Start Batch</button></br>
+					<button id="zone9controloff" onclick="io.set('zone9control', 0, callback);">Stop Batch</button></br>
+					<label for="zone9override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone9override" onclick="overrideZone('zone9');"/>
+				</div>
+				
+				<div class="buttonset">
+					<button id="zone10controlon" onclick="io.set('zone10control', 1, callback);">Start Batch</button></br>
+					<button id="zone10controloff" onclick="io.set('zone10control', 0, callback);">Stop Batch</button></br>
+					<label for="zone10override" class="checkbox">Manual Ctrl</label><input type="checkbox" id="zone10override" onclick="overrideZone('zone10');"/>
+				</div>
+			</div>
+			<div class='control'>
+				<div class='blowerImage'><span id="blower2state" class="state"></span><div class="blowerText">Blower 2</div></div>
+				<div class='blower'></br>
+					Pressure: <span id='blower2pressure'>--</span> {$io->units("blower2pressure")}</br>
+					Speed: <span id='blower2Speed' onclick="setBlowerValue('blower2');">--</span> {$io->units("blower2Speed")}</br>
+					<label for="blower2override" style="width: auto; position:relative; font-size:14px;">Manual Ctrl:</label><input style="position: relative;" type="checkbox" id="blower2override" onclick="overrideBlower('blower2');"/>
+				</div>
+				<div class='zone' id='zone6' ondblclick="dblClickZone('zone6');"><p id="zone6name">Zone 6</p><p id="zone6TempData">Zone 6: <span id='zone6Temp'>--</span>°{$io->units("zone6Temp")}</p><p id="zone6data">Regime: <span id='zone6regime'>--</span></br>Start: <span id='zone6date'></span></div>
+				<div class='zone' id='zone7' ondblclick="dblClickZone('zone7');"><p id="zone7name">Zone 7</p><p id="zone7TempData">Zone 7: <span id='zone7Temp'>--</span>°{$io->units("zone7Temp")}</p><p id="zone7data">Regime: <span id='zone7regime'>--</span></br>Start: <span id='zone7date'></span></div>
+				<div class='zone' id='zone8' ondblclick="dblClickZone('zone8');"><p id="zone8name">Zone 8</p><p id="zone8TempData">Zone 8: <span id='zone8Temp'>--</span>°{$io->units("zone8Temp")}</p><p id="zone8data">Regime: <span id='zone8regime'>--</span></br>Start: <span id='zone8date'></span></div>
+				<div class='zone' id='zone9' ondblclick="dblClickZone('zone9');"><p id="zone9name">Zone 9</p><p id="zone9TempData">Zone 9: <span id='zone9Temp'>--</span>°{$io->units("zone9Temp")}</p><p id="zone9data">Regime: <span id='zone9regime'>--</span></br>Start: <span id='zone9date'></span></div>
+				<div class='zone' id='zone10' ondblclick="dblClickZone('zone10');"><p id="zone10name">Zone 10</p><p id="zone10TempData">Zone 10: <span id='zone10Temp'>--</span>°{$io->units("zone10Temp")}</p><p id="zone10data">Regime: <span id='zone10regime'>--</span></br>Start: <span id='zone10date'></span></div>
+				<div class='pipe'></div>
+				<div class='zonepipe' style='top: 150px'></div>
+				<div class='zonepipe' style='top: 264px'></div>
+				<div class='zonepipe' style='top: 378px'></div>
+				<div class='zonepipe' style='top: 492px'></div>
+				<div class='zonepipe' style='top: 606px'></div>
+				<div class='circle' style='top: 135px;'><p class='damper'><span id='zone6Damper' onclick="setValue('zone6')">--</span>{$io->units("zone6Damper")}</p></div>
+				<div class='circle' style='top: 249px;'><p class='damper'><span id='zone7Damper' onclick="setValue('zone7')">--</span>{$io->units("zone7Damper")}</p></div>
+				<div class='circle' style='top: 363px;'><p class='damper'><span id='zone8Damper' onclick="setValue('zone8')">--</span>{$io->units("zone8Damper")}</p></div>
+				<div class='circle' style='top: 477px;'><p class='damper'><span id='zone9Damper' onclick="setValue('zone9')">--</span>{$io->units("zone9Damper")}</p></div>
+				<div class='circle' style='top: 591px;'><p class='damper'><span id='zone10Damper' onclick="setValue('zone10')">--</span>{$io->units("zone10Damper")}</p></div>
+			</div>
+		<script>
+			/*
+			*  Function: 
+			*      $(document).ready
+			*  Parameters: 
+			*      function to execute when document is done loading
+			*  Return value:
+			*      none
+			*/
+			$(document).ready(function() {
+				//override this function to display the values correctly
+				currentPage.setIOFields = function (data){					
+					$.each(data, function(key, val){
+						var e = $('#' + key);
+						if(e !== undefined){
+							if(key == key.match(/zone.control/) || key == key.match(/zone..control/)){
+								var zone = key.substring(0, 5);
+								if(key == key.match(/zone..control/))
+									zone = key.substring(0, 6);
+								if(val == 1){
+									$('#' + key + "on").html("Running");
+									$('#' + key + "off").html("Stop Batch");
+									$('#' + key + "on").css('color', 'darkgreen');
+									$('#' + key + "off").css('color', 'black');
+									$('#' + zone).css('background-color', 'green');
+									$('#' + zone + 'TempData').show();
+									$('#' + zone + 'data').show();
+									$('#' + zone + 'name').hide();
+								}else{
+									$('#' + key + "on").html("Start Batch");
+									$('#' + key + "off").html("Stopped");
+									$('#' + key + "on").css('color', 'black');
+									$('#' + key + "off").css('color', 'darkred');
+									$('#' + zone).css('background-color', 'grey');
+									$('#' + zone + 'TempData').hide();
+									$('#' + zone + 'data').hide();
+									$('#' + zone + 'name').show();
+								}
+							}else if(key == key.match(/blower.fault/)){
+								var blower = $("#" + key.substring(0, 7) + "state");
+								if(val < 2){
+									blower.html("FAULT");
+									blower.css('color', 'red');
+								}else if(blower.html() == "FAULT")
+									blower.html("");
+							}else if(key == key.match(/blower.run/)){
+								var blower = $("#" + key.substring(0, 7) + "state");
+								if(blower.html() != "FAULT"){
+									if(val == 1){
+										blower.html("ON");
+										blower.css('color', 'green');
+									}else{
+										blower.html("OFF");
+										blower.css('color', 'black');
+									}
+								}
+							}else if(key == key.match(/blower.override/)){
+								var blower = key.substring(0, 7);
+								var checked = val == 1 ? true : false;
+								e.prop('checked', checked);
+								if(checked)
+									$('#' + blower + 'Speed').css( 'cursor', 'pointer' );
+								else
+									$('#' + blower + 'Speed').css( 'cursor', 'default' );
+							}else if(key == key.match(/zone.override/) || key == key.match(/zone..override/)){
+								var zone = key.substring(0, 5);
+								if(key == key.match(/zone..override/))
+									zone = key.substring(0, 6);
+								var checked = val == 1 ? true : false;
+								e.prop('checked', checked);
+								if(checked)
+									$('#' + zone + 'Damper').css( 'cursor', 'pointer' );
+								else
+									$('#' + zone + 'Damper').css( 'cursor', 'default' );
+							}else{
+								e.html(val);
+							}
+						}
+					});
+					getStartDates();
+				}
+				// update the IO fields using data from widget1State.json every 3 seconds
+				currentPage.refreshIOFields("state.json", 3, "content");
+			
+			});
+		</script>
+	</div>
+	<div id="dialog-form" title="Manually Set Damper" style="font-size=12px;" hidden>
+		<p>Please enter the value for the Damper.</p>
+		<input style="width:40%; text-align: left;" id='value' type="text"/>%
+	</div>
+	<div id="blower1-form" title="Manually Set VFD" style="font-size=12px;" hidden>
+		<p>Please enter the value for the VFD.</p>
+		<input style="width:40%; text-align: left;" id='blower1value' type="text"/>%</br>
+		<button style="margin-top: 10px;" onclick="io.set('blower1run', 1, callback);">Blower On</button>
+		<button onclick="io.set('blower1run', 0, callback);">Blower Off</button>
+	</div>
+	<div id="blower2-form" title="Manually Set VFD" style="font-size=12px;" hidden>
+		<p>Please enter the value for the VFD.</p>
+		<input style="width:40%; text-align: left;" id='blower2value' type="text"/>%</br>
+		<button style="margin-top: 10px;" onclick="io.set('blower2run', 1, callback);">Blower On</button>
+		<button onclick="io.set('blower2run', 0, callback);">Blower Off</button>
+	</div>
+	</body>
+</html>
+{else}
+<html>
+<head>
+	<title>Access denied</title>
+</head>
+<body>
+	<p>Access denied</p>
+	<script>window.location.href = "loginScreen.html";</script>
+</body>
+</html>
+{/if}
