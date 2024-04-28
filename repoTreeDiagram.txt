@@ -1,0 +1,1288 @@
+Folder PATH listing
+Volume serial number is 0AC5-B3A8
+C:.
+�   .DS_Store
+�   backend.js
+�   copy_build.js
+�   index_template.html
+�   LICENSE
+�   package-lock.json
+�   package.json
+�   Procfile
+�   readme.md
+�   repoTree.txt
+�   run_all_facility_tests.sh
+�   
+����docs
+�   �   BATCH_MOVING_CHECKLIST.mdlet's say I'm playing with different versions of a code, which have slighty different purposes.  Should I use git branches or separate folders or repositories?
+�   �   FACILITY_CONFIGURATION_QUESTIONNAIRE.md
+�   �   FEATURES.md
+�   �   MODULE_SETUP.md
+�   �   STANDARD_FACILITY_SETTINGS.md
+�   �   USB_TROUBLESHOOTING.md
+�   �   VFD_MODELS.md
+�   �   WIRELESS_SETUP.md
+�   �   
+�   ����doc_images
+�   �       batch-data-graph.png
+�   �       batch-moving.png
+�   �       batch-naming.png
+�   �       blower-pressure-range-settings.png
+�   �       logs-page.png
+�   �       mister-temp-control-settings.png
+�   �       monitor-inputs.png
+�   �       tools-page.png
+�   �       view-log-file.png
+�   �       wireless-probe-id-settings.png
+�   �       
+�   ����vfd_manuals
+�           hitachi-sj700-manual.pdf
+�           SJ-P1 Users guide chapter1-20 Rev05 NT251BX-2.pdf
+�           
+����facilities
+�   ����a_damper_reversing
+�   �   ����edama
+�   �   �   �   FACILITY_SETTINGS.md
+�   �   �   �   IO_ROSTER.md
+�   �   �   �   README.md
+�   �   �   �   release.sh
+�   �   �   �   ZONE_IDS_MAP.md
+�   �   �   �   
+�   �   �   ����custom_web_pages
+�   �   �   �       facility-config.js
+�   �   �   �       facility.png
+�   �   �   �       
+�   �   �   ����mocks
+�   �   �   �       batch_files.json
+�   �   �   �       settings.json
+�   �   �   �       state.json
+�   �   �   �       zone.csv
+�   �   �   �       zone_startup.json
+�   �   �   �       
+�   �   �   ����scripts
+�   �   �   �       facility_configuration.lua
+�   �   �   �       
+�   �   �   ����tests
+�   �   �           test.lua
+�   �   �           
+�   �   ����x600m
+�   �       ����scripts
+�   �       �       blower_functions.lua
+�   �       �       damper_functions.lua
+�   �       �       data_functions.lua
+�   �       �       temp_functions.lua
+�   �       �       test_helpers.lua
+�   �       �       
+�   �       ����tests
+�   �               application_tests.lua
+�   �               blower_functions_tests.lua
+�   �               damper_functions_tests.lua
+�   �               temp_functions_tests.lua
+�   �               wireless_temp_sensor_tests.lua
+�   �               zone_functions_tests.lua
+�   �               
+�   ����h_damper_reversing
+�   �   ����aumsville
+�   �   �   �   FACILITY_SETTINGS.md
+�   �   �   �   IO_ROSTER.md
+�   �   �   �   README.md
+�   �   �   �   release.sh
+�   �   �   �   ZONE_IDS_MAP.md
+�   �   �   �   
+�   �   �   ����custom_web_pages
+�   �   �   �       facility-config.js
+�   �   �   �       facility.png
+�   �   �   �       
+�   �   �   ����mocks
+�   �   �   �       batch_files.json
+�   �   �   �       settings.json
+�   �   �   �       state.json
+�   �   �   �       zone.csv
+�   �   �   �       zone_startup.json
+�   �   �   �       
+�   �   �   ����scripts
+�   �   �   �       facility_configuration.lua
+�   �   �   �       
+�   �   �   ����tests
+�   �   �           test.lua
+�   �   �           
+�   �   ����blossom_valley
+�   �   �   �   FACILITY_SETTINGS.md
+�   �   �   �   IO_ROSTER.md
+�   �   �   �   README.md
+�   �   �   �   release.sh
+�   �   �   �   SHARED_IO_MAP.md
+�   �   �   �   ZONE_IDS_MAP.md
+�   �   �   �   
+�   �   �   ����backups
+�   �   �   �       BackupBlossomValleyDec142020.sbin
+�   �   �   �       BackupBlossomValleyDec162020.sbin
+�   �   �   �       BackupBlossomValleyDec212020.sbin
+�   �   �   �       BackupBlossomValleyFeb022021.sbin
+�   �   �   �       BackupBlossomValleyFeb252021.sbin
+�   �   �   �       BackupBlossomValleyJan122021.sbin
+�   �   �   �       BackupBlossomValleyJan252021.sbin
+�   �   �   �       BackupBlossomValleyJan312021.sbin
+�   �   �   �       BackupBlossomValleyPreUpdateFeb092021.sbin
+�   �   �   �       
+�   �   �   ����custom_web_pages
+�   �   �   �       facility-config.js
+�   �   �   �       facility.png
+�   �   �   �       
+�   �   �   ����expansion_1
+�   �   �   �   �   FACILITY_SETTINGS.md
+�   �   �   �   �   IO_ROSTER.md
+�   �   �   �   �   README.md
+�   �   �   �   �   release.sh
+�   �   �   �   �   ZONE_IDS_MAP.md
+�   �   �   �   �   
+�   �   �   �   ����custom_web_pages
+�   �   �   �   �       facility-config.js
+�   �   �   �   �       facility.png
+�   �   �   �   �       
+�   �   �   �   ����mocks
+�   �   �   �   �       batch_files.json
+�   �   �   �   �       settings.json
+�   �   �   �   �       state.json
+�   �   �   �   �       zone.csv
+�   �   �   �   �       zone_startup.json
+�   �   �   �   �       
+�   �   �   �   ����scripts
+�   �   �   �   �       facility_configuration.lua
+�   �   �   �   �       
+�   �   �   �   ����tests
+�   �   �   �           test.lua
+�   �   �   �           
+�   �   �   ����mocks
+�   �   �   �       batch_files.json
+�   �   �   �       settings.json
+�   �   �   �       state.json
+�   �   �   �       zone.csv
+�   �   �   �       zone_startup.json
+�   �   �   �       
+�   �   �   ����scripts
+�   �   �   �       blower_functions.lua
+�   �   �   �       damper_functions.lua
+�   �   �   �       data_functions.lua
+�   �   �   �       facility_configuration.lua
+�   �   �   �       temp_functions.lua
+�   �   �   �       
+�   �   �   ����tests
+�   �   �           test.lua
+�   �   �           
+�   �   ����dirt_hugger
+�   �   �   �   FACILITY_SETTINGS.md
+�   �   �   �   IO_ROSTER.md
+�   �   �   �   README.md
+�   �   �   �   release.sh
+�   �   �   �   
+�   �   �   ����backups
+�   �   �   �       dirt_hugger20190830.sbin
+�   �   �   �       
+�   �   �   ����custom_web_pages
+�   �   �   �       facility-config.js
+�   �   �   �       
+�   �   �   ����mocks
+�   �   �   �       batch_files.json
+�   �   �   �       settings.json
+�   �   �   �       state.json
+�   �   �   �       zone.csv
+�   �   �   �       zone_startup.json
+�   �   �   �       
+�   �   �   ����scripts
+�   �   �   �       facility_configuration.lua
+�   �   �   �       
+�   �   �   ����tests
+�   �   �           test.lua
+�   �   �           
+�   �   ����grimms_fuel_expansion
+�   �   �   �   FACILITY_SETTINGS.md
+�   �   �   �   IO_ROSTER.md
+�   �   �   �   README.md
+�   �   �   �   release.sh
+�   �   �   �   
+�   �   �   ����backups
+�   �   �   �       BackupGrimmsSept252020.sbin
+�   �   �   �       
+�   �   �   ����custom_web_pages
+�   �   �   �       facility-config.js
+�   �   �   �       facility.png
+�   �   �   �       
+�   �   �   ����mocks
+�   �   �   �       batch_files.json
+�   �   �   �       point_six_data.xml
+�   �   �   �       settings.json
+�   �   �   �       state.json
+�   �   �   �       zone.csv
+�   �   �   �       zone_startup.json
+�   �   �   �       
+�   �   �   ����scripts
+�   �   �   �       facility_configuration.lua
+�   �   �   �       
+�   �   �   ����tests
+�   �   �           test.lua
+�   �   �           
+�   �   ����north_plains
+�   �   �   �   FACILITY_SETTINGS.md
+�   �   �   �   IO_ROSTER.md
+�   �   �   �   README.md
+�   �   �   �   release.sh
+�   �   �   �   ZONE_IDS_MAP.md
+�   �   �   �   
+�   �   �   ����custom_web_pages
+�   �   �   �       facility-config.js
+�   �   �   �       
+�   �   �   ����mocks
+�   �   �   �       batch_files.json
+�   �   �   �       settings.json
+�   �   �   �       state.json
+�   �   �   �       zone.csv
+�   �   �   �       zone_startup.json
+�   �   �   �       
+�   �   �   ����scripts
+�   �   �   �       facility_configuration.lua
+�   �   �   �       
+�   �   �   ����tests
+�   �   �           test.lua
+�   �   �           
+�   �   ����ostrom_organics
+�   �   �   �   FACILITY_SETTINGS.md
+�   �   �   �   IO_ROSTER.md
+�   �   �   �   README.md
+�   �   �   �   release.sh
+�   �   �   �   
+�   �   �   ����custom_web_pages
+�   �   �   �       facility-config.js
+�   �   �   �       facility.png
+�   �   �   �       
+�   �   �   ����mocks
+�   �   �   �       batch_files.json
+�   �   �   �       settings.json
+�   �   �   �       state.json
+�   �   �   �       zone.csv
+�   �   �   �       zone_startup.json
+�   �   �   �       
+�   �   �   ����scripts
+�   �   �   �       facility_configuration.lua
+�   �   �   �       
+�   �   �   ����tests
+�   �   �           test.lua
+�   �   �           
+�   �   ����x600m
+�   �       ����scripts
+�   �       �       blower_functions.lua
+�   �       �       damper_functions.lua
+�   �       �       data_functions.lua
+�   �       �       temp_functions.lua
+�   �       �       test_helpers.lua
+�   �       �       
+�   �       ����tests
+�   �               application_tests.lua
+�   �               blower_functions_tests.lua
+�   �               damper_functions_tests.lua
+�   �               temp_functions_tests.lua
+�   �               wireless_temp_sensor_tests.lua
+�   �               zone_functions_tests.lua
+�   �               
+�   ����single_direction
+�       ����allwood
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       facility.png
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����billings
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����bloedel
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       temp_facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����boost_organics
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����backups
+�       �   �       BackupSettingsMay072020.sbin
+�       �   �       
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       facility.png
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����brady_trucking
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����cowlitz_valley
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����backups
+�       �   �       settings-01-05-2018.sbin
+�       �   �       settings-01-13-2018.sbin
+�       �   �       
+�       �   ����custom_web_pages
+�       �   �   �   blower.png
+�       �   �   �   bootstrap-responsive.min.css
+�       �   �   �   bootstrap.min.css
+�       �   �   �   bootstrap.min.js
+�       �   �   �   compost.css
+�       �   �   �   compost.js
+�       �   �   �   glyphicons-halflings-white.png
+�       �   �   �   glyphicons-halflings.png
+�       �   �   �   gmtlogo.png
+�       �   �   �   graph.css
+�       �   �   �   graph.html
+�       �   �   �   html2canvas.js
+�       �   �   �   index.html
+�       �   �   �   jquery-ui.js
+�       �   �   �   settings.html
+�       �   �   �   
+�       �   �   ����javascript
+�       �   �           jquery-1.11.1.min.js
+�       �   �           x600m.js
+�       �   �           
+�       �   ����mocks
+�       �   �       settings.json
+�       �   �       sqliteOps.php
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����original
+�       �   �   �   README.md
+�       �   �   �   
+�       �   �   ����custom_web_pages
+�       �   �   �   �   blower.png
+�       �   �   �   �   compost.css
+�       �   �   �   �   compost.js
+�       �   �   �   �   graph.css
+�       �   �   �   �   graph.html
+�       �   �   �   �   html2canvas.js
+�       �   �   �   �   index.html
+�       �   �   �   �   jquery-ui.js
+�       �   �   �   �   settings.html
+�       �   �   �   �   
+�       �   �   �   ����javascript
+�       �   �   �           jquery-1.11.1.min.js
+�       �   �   �           x600m.js
+�       �   �   �           
+�       �   �   ����mocks
+�       �   �   �       sqliteOps.php
+�       �   �   �       state.json
+�       �   �   �       
+�       �   �   ����scripts
+�       �   �           blower_control_script.lua
+�       �   �           control_functions.lua
+�       �   �           zone_control_loop_1-5.lua
+�       �   �           zone_control_loop_6-10.lua
+�       �   �           zone_startup_script.lua
+�       �   �           
+�       �   ����scripts
+�       �   �       blower_control_script.lua
+�       �   �       control_functions.lua
+�       �   �       db_setup.lua
+�       �   �       zone_control_loop.lua
+�       �   �       zone_startup_script.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����creekside_soils
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����dallah
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����demo_unit
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       temp-facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       point_six_data.xml
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����dundee
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����grimms_fuel_pilot
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����backups
+�       �   �       grimms_fuel_settings_20190112.sbin
+�       �   �       
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����natures_needs
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   settings-11-10-2017.sbin
+�       �   �   settings.sbin
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       bootstrap-responsive.min.css
+�       �   �       bootstrap.min.css
+�       �   �       bootstrap.min.js
+�       �   �       facility.png
+�       �   �       glyphicons-halflings-white.png
+�       �   �       glyphicons-halflings.png
+�       �   �       gmtlogo.png
+�       �   �       graph.css
+�       �   �       graph.html
+�       �   �       html2canvas.js
+�       �   �       index.html
+�       �   �       inputs.html
+�       �   �       jquery-ui.js
+�       �   �       logs.html
+�       �   �       settings.html
+�       �   �       status.html
+�       �   �       webmacs.css
+�       �   �       webmacs.js
+�       �   �       
+�       �   ����mocks
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       blower_functions.lua
+�       �   �       damper_functions.lua
+�       �   �       data_functions.lua
+�       �   �       facility_configuration.lua
+�       �   �       temp_functions.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����old_dirt_hugger
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����backups
+�       �   �       settings-2018-06-06.sbin
+�       �   �       
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       point_six_data.xml
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����original_config
+�       �   �   �   README.md
+�       �   �   �   
+�       �   �   ����scripts
+�       �   �           script1.lua
+�       �   �           script2.lua
+�       �   �           script3.lua
+�       �   �           script4.lua
+�       �   �           script5.lua
+�       �   �           
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����olympic_organics
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����pala_waste_management
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����expansion_1
+�       �   �   �   IO_ROSTER.md
+�       �   �   �   README.md
+�       �   �   �   release.sh
+�       �   �   �   
+�       �   �   ����custom_web_pages
+�       �   �   �       facility-config.js
+�       �   �   �       
+�       �   �   ����mocks
+�       �   �   �       batch_files.json
+�       �   �   �       settings.json
+�       �   �   �       state.json
+�       �   �   �       zone.csv
+�       �   �   �       zone_startup.json
+�       �   �   �       
+�       �   �   ����scripts
+�       �   �   �       facility_configuration.lua
+�       �   �   �       
+�       �   �   ����tests
+�       �   �           test.lua
+�       �   �           
+�       �   ����expansion_2
+�       �   �   �   release.sh
+�       �   �   �   
+�       �   �   ����custom_web_pages
+�       �   �   �       facility-config.js
+�       �   �   �       
+�       �   �   ����mocks
+�       �   �   �       batch_files.json
+�       �   �   �       settings.json
+�       �   �   �       state.json
+�       �   �   �       zone.csv
+�       �   �   �       zone_startup.json
+�       �   �   �       
+�       �   �   ����scripts
+�       �   �   �       data_functions.lua
+�       �   �   �       facility_configuration.lua
+�       �   �   �       
+�       �   �   ����tests
+�       �   �           test.lua
+�       �   �           
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����preengineered_wired
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �   �   facility-config.js
+�       �   �   �   
+�       �   �   ����other_facility_configs
+�       �   �           2-zone-facility-config.js
+�       �   �           3-zone-facility-config.js
+�       �   �           4-zone-facility-config.js
+�       �   �           5-zone-facility-config.js
+�       �   �           6-zone-facility-config.js
+�       �   �           7-zone-facility-config.js
+�       �   �           8-zone-facility-config.js
+�       �   �           
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����preengineered_wireless
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �   �   facility-config.js
+�       �   �   �   
+�       �   �   ����other_facility_configs
+�       �   �           2-zone-facility-config.js
+�       �   �           3-zone-facility-config.js
+�       �   �           4-zone-facility-config.js
+�       �   �           5-zone-facility-config.js
+�       �   �           6-zone-facility-config.js
+�       �   �           7-zone-facility-config.js
+�       �   �           8-zone-facility-config.js
+�       �   �           
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����rdos
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����recompose_demo
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       point_six_data.xml
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����revolution_organics
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   rev-organics-original-settings.sbin
+�       �   �   settings.sbin
+�       �   �   
+�       �   ����backups
+�       �   �       settings-2018-02-05.sbin
+�       �   �       
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       facility.png
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����salinas
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����schaus
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����skagit_soils
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����stickland_farms
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����strathmore
+�       �   �   CONTROL_LOGIC.md
+�       �   �   control_logic_diagram.png
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����timber_creek
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����univerve
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����unrivaled
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����custom_web_pages
+�       �   �       facility-config.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����vision_recycling
+�       �   �   FACILITY_SETTINGS.md
+�       �   �   IO_ROSTER.md
+�       �   �   README.md
+�       �   �   release.sh
+�       �   �   
+�       �   ����backups
+�       �   �       LivermoreOct232019settings.sbin
+�       �   �       
+�       �   ����custom_web_pages
+�       �   �       0.64dbf450.chunk.js
+�       �   �       1.fbff59c5.chunk.js
+�       �   �       facility-config.js
+�       �   �       facility.png
+�       �   �       index.html
+�       �   �       main.8adfc270.css
+�       �   �       main.998b2666.js
+�       �   �       
+�       �   ����mocks
+�       �   �       batch_files.json
+�       �   �       settings.json
+�       �   �       state.json
+�       �   �       zone.csv
+�       �   �       zone_startup.json
+�       �   �       
+�       �   ����scripts
+�       �   �       facility_configuration.lua
+�       �   �       
+�       �   ����tests
+�       �           test.lua
+�       �           
+�       ����x600m
+�           ����scripts
+�           �       blower_functions.lua
+�           �       damper_functions.lua
+�           �       data_functions.lua
+�           �       temp_functions.lua
+�           �       test_helpers.lua
+�           �       
+�           ����tests
+�                   application_tests.lua
+�                   blower_functions_tests.lua
+�                   damper_functions_tests.lua
+�                   temp_functions_tests.lua
+�                   wireless_temp_sensor_tests.lua
+�                   zone_functions_tests.lua
+�                   
+����public
+�   �   blower.png
+�   �   bootstrap-responsive.min.css
+�   �   bootstrap.min.css
+�   �   bootstrap.min.js
+�   �   glyphicons-halflings-white.png
+�   �   glyphicons-halflings.png
+�   �   gmtlogo.png
+�   �   index.html
+�   �   
+�   ����css
+�   �   ����flot
+�   �   �       flot.css
+�   �   �       
+�   �   ����themes
+�   �       ����smoothness
+�   �               jquery-ui-1.10.3.custom.min.css
+�   �               
+�   ����javascript
+�       �   jquery-1.11.1.min.js
+�       �   jquery-ui-1.10.3.custom.min.js
+�       �   jquery.ui.touch-punch.min.js
+�       �   x600m.js
+�       �   
+�       ����flot
+�               jquery.flot.min.js
+�               jquery.flot.time.min.js
+�               
+����src
+�   �   enzyme-setup.js
+�   �   index.js
+�   �   
+�   ����components
+�   �   ����AerationModal
+�   �   �       AerationModal.js
+�   �   �       AerationModal.test.js
+�   �   �       
+�   �   ����BatchModal
+�   �   �       BatchModal.css
+�   �   �       BatchModal.js
+�   �   �       BatchModal.test.js
+�   �   �       
+�   �   ����BiofilterBlowerModal
+�   �   �       BiofilterBlowerModal.css
+�   �   �       BiofilterBlowerModal.js
+�   �   �       BiofilterBlowerModal.test.js
+�   �   �       
+�   �   ����BlowerModal
+�   �   �       BlowerModal.css
+�   �   �       BlowerModal.js
+�   �   �       BlowerModal.test.js
+�   �   �       
+�   �   ����DeleteLogFileModal
+�   �   �       DeleteLogFileModal.js
+�   �   �       DeleteLogFileModal.test.js
+�   �   �       
+�   �   ����DrumRotationConfirmationModal
+�   �   �       DrumRotationConfirmationModal.js
+�   �   �       DrumRotationConfirmationModal.test.js
+�   �   �       
+�   �   ����EjectModal
+�   �   �       EjectModal.js
+�   �   �       EjectModal.test.js
+�   �   �       
+�   �   ����FacilityCardLayout
+�   �   �       FacilityCardLayout.css
+�   �   �       FacilityCardLayout.js
+�   �   �       FacilityCardLayout.test.js
+�   �   �       
+�   �   ����FacilityLayout
+�   �   �       FacilityLayout.css
+�   �   �       FacilityLayout.js
+�   �   �       FacilityLayout.test.js
+�   �   �       FacilityLayoutPump.css
+�   �   �       FacilityLayoutPump.js
+�   �   �       FacilityLayoutPump.test.js
+�   �   �       
+�   �   ����FacilityLogs
+�   �   �       FacilityLogs.css
+�   �   �       FacilityLogs.js
+�   �   �       FacilityLogs.test.js
+�   �   �       
+�   �   ����FacilityMap
+�   �   �       FacilityMap.js
+�   �   �       FacilityMap.test.js
+�   �   �       
+�   �   ����FacilityModules
+�   �   �       FacilityModules.js
+�   �   �       
+�   �   ����FacilitySettings
+�   �   �       FacilitySettings.css
+�   �   �       FacilitySettings.js
+�   �   �       FacilitySettings.test.js
+�   �   �       
+�   �   ����FacilityTools
+�   �   �       FacilityTools.css
+�   �   �       FacilityTools.js
+�   �   �       FacilityTools.test.js
+�   �   �       
+�   �   ����Footer
+�   �   �       Footer.css
+�   �   �       Footer.js
+�   �   �       Footer.test.js
+�   �   �       
+�   �   ����LoggedOutModal
+�   �   �       LoggedOutModal.js
+�   �   �       LoggedOutModal.test.js
+�   �   �       
+�   �   ����Main
+�   �   �       Main.css
+�   �   �       Main.js
+�   �   �       Main.test.js
+�   �   �       
+�   �   ����MonitorInputsModal
+�   �   �       MonitorInputsModal.css
+�   �   �       MonitorInputsModal.js
+�   �   �       MonitorInputsModal.test.js
+�   �   �       
+�   �   ����NavBar
+�   �   �       NavBar.css
+�   �   �       NavBar.js
+�   �   �       NavBar.test.js
+�   �   �       
+�   �   ����ProcessingIndicator
+�   �   �       ProcessingIndicator.js
+�   �   �       
+�   �   ����PumpModal
+�   �   �       PumpModal.css
+�   �   �       PumpModal.js
+�   �   �       PumpModal.test.js
+�   �   �       
+�   �   ����SavingSettingsModal
+�   �   �       SavingSettingsModal.js
+�   �   �       SavingSettingsModal.test.js
+�   �   �       
+�   �   ����ToolTip
+�   �   �       ToolTip.css
+�   �   �       ToolTip.js
+�   �   �       
+�   �   ����ViewGraphModal
+�   �   �       ViewGraphModal.css
+�   �   �       ViewGraphModal.js
+�   �   �       ViewGraphModal.test.js
+�   �   �       
+�   �   ����ViewLogFileModal
+�   �   �       ViewLogFileModal.js
+�   �   �       ViewLogFileModal.test.js
+�   �   �       
+�   �   ����ZoneModal
+�   �           ZoneModal.css
+�   �           ZoneModal.js
+�   �           ZoneModal.test.js
+�   �           
+�   ����helpers
+�       �   settingsDefinitions.js
+�       �   
+�       ����mock_log_files
+�       �       log_with_max_dat_points.csv
+�       �       
+�       ����test
+�       �   ����facility-configs
+�       �           blower-has-speed-control-and-custom-cycle-control.js
+�       �           reversing-aeration-direction-system.js
+�       �           
+�       ����X600
+�               X600.js
+�               X600Mock.js
+�               
+����x600m
+    ����css
+    �   ����flot
+    �   �       flot.css
+    �   �       
+    �   ����themes
+    �       ����smoothness
+    �               jquery-ui-1.10.3.custom.min.css
+    �               
+    ����javascript
+        �   jquery-1.11.1.min.js
+        �   jquery-ui-1.10.3.custom.min.js
+        �   jquery.ui.touch-punch.min.js
+        �   x600m.js
+        �   
+        ����flot
+                jquery.flot.min.js
+                jquery.flot.time.min.js
+                
